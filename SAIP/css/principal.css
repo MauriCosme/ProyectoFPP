@@ -1,0 +1,247 @@
+
+body{
+	min-width: 850px;
+	background: ;
+}
+
+#bloque1{
+	width: 100%;
+/*	background: gray;*/
+	text-align: center;
+	display: flex;	
+}
+
+#izq{
+	padding-top: 1%;
+	flex-wrap: wrap;
+	width: 20%;
+	
+}
+#cent{
+	flex-wrap: wrap;
+	width: 60%;
+}
+#der{
+	flex-wrap: wrap;
+	width: 20%;
+}
+
+#imgfpp{
+	width: 100%;
+}
+#SAIP{
+	margin-top: 0px;
+	margin-left: 25%;
+	margin-right: 25%;
+	border-bottom-left-radius: 22px;
+	border-bottom-right-radius: 22px;
+	height: 35%;
+	background: #F65E12;
+	padding-left: 5%;
+	padding-right: 5%;
+	font-size: 250%; 
+	color: white;
+}
+
+#cerrar{
+	background: #FFC41B  ;
+	color: black;
+	border-radius: 10px;
+	padding-left: 10%;
+	padding-right:10%;
+	border-style: outset;
+  	border: none;
+}
+
+#cerrar:active{
+	border-top-color: #1b435e;
+	filter: grayscale(80%);
+	}
+
+
+
+#usuari{
+	margin-bottom: 0px;
+	font-size: 20px;
+	color: blue;
+	font-weight: bold;
+}
+
+#bloque2{
+	margin-top: -23px;
+	/*background: red;*/
+	height: 50px;
+	
+	
+}
+
+#buscador{
+	width: 60%;
+	height: 50px;
+	background: #F1D071  ;
+	border-radius: 15px;
+	
+
+}
+
+#btnBuscador{
+	background: #F65E12;
+	
+
+}
+
+#btnBuscador:active {
+   border-top-color: #1b435e;
+  filter: grayscale(50%);
+  cursor:url('cursor1.cur');
+   }
+
+
+
+
+#textobuscarpor{
+	padding-left: 5%;
+	font-size: 120%;
+	width: 20%;
+}
+
+#btnB3Agregar{
+	background: #50C714;
+  	margin-top: 15px;
+  	margin-right: 30%;
+}
+#btnB3Agregar:active {
+   border-top-color: #1b435e;
+  filter: grayscale(80%);
+   }
+#btnB3VerPuntaje{
+	background: #50C714;
+	border-style: outset;
+  	border: none;
+  	border-radius: 2px;
+  	width: 140px; 
+  	margin-top: 15px;
+  	margin-left: 30%;
+  	color: white;
+  	border-radius: 5px;
+}
+#btnB3VerPuntaje:active {
+   border-top-color: #1b435e;
+  filter: grayscale(80%);
+   }
+#bloque3{
+
+}
+
+
+#bloque4{
+	margin-top:; 
+	width: 100%;
+	min-width: min-width: 1300px;
+	height: 100%;
+	
+	
+	
+	/*overflow: auto;*/
+}
+
+#divBaseTabla2{
+	margin-left: 1%;
+	margin-top: 0px;
+	width: 97%;
+	min-width: 1300px;
+	height: 50px;
+	overflow-y: hidden;
+	position: relative;
+	overflow-x: hidden;
+	
+	
+}
+
+#divBaseTabla{
+	margin-left: 1%;
+	margin-top: -50px;
+	width: 98.3%;
+	min-width: 1300px;
+	height: 400px;
+	overflow-y: auto;
+	overflow-x: hidden;	
+}
+
+
+
+
+.celdasTitulo{ 
+	border: 1px solid ;
+	text-align: center;
+	height: 30px;
+	font-size: 13px;
+	
+}
+.celdasCont{
+	border: 1px solid gray;
+	text-align: center;
+	word-wrap: break-word;/*Si el contenido supera el tamano, adiciona a una nueve linea**/
+}
+
+#pruebascroll{
+background: gray;
+color: red;
+
+
+}
+
+
+#filatitulos{
+	height: 10px;
+	border: 1px solid black;
+	background: #1E3540;
+	color: white;
+	word-wrap: break-word;/*Si el contenido supera el tamano, adiciona a una nueve linea**/
+	min-width: min-width: 1315px;
+
+
+
+}
+
+#filatituloss{
+	height: 10px;
+	border: 1px solid black;
+	background: #1E3540;
+	color: white;
+	word-wrap: break-word;/*Si el contenido supera el tamano, adiciona a una nueve linea**/
+
+	min-width: min-width: 1315px;
+
+
+}
+
+
+
+#btnE{
+	text-align: center;
+	width: 100%;
+	font-size: 80%;
+	background: #E74A40;
+	border:0px solid;
+	margin-bottom: 5px;
+}
+
+#btnver{
+    width: 100%;
+	font-size: 80%;
+	background: #0B4B77;
+	border:0px solid;
+
+}
+
+#tab1{
+
+min-width: 1300px;
+
+}
+
+tr:nth-child(2n) {
+    background: none repeat scroll 0 0 #DFFEF7;
+}   
+

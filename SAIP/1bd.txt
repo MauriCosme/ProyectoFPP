@@ -1,0 +1,175 @@
+use saip;
+
+create table productores (
+id int not null auto_increment,
+nombre varchar (70),
+codigo varchar(50),
+localidad varchar(80),
+estado varchar(50),
+idFamiliaFPP varchar(50),
+municipio varchar(50),
+curp varchar(30),
+numeroFolio varchar(80),
+nombreTitular varchar(50),
+sexo varchar(30),
+fechaNacimiento varchar(20),
+nombreConyuge varchar(50),
+productorGuia varchar(50),
+añoIncorporacion varchar(50),
+primary key (id)
+);
+
+
+
+
+
+
+
+create table datosPago(
+id int not null auto_increment,
+folioPadron varchar(50),
+folioPadronPrestado varchar(50),
+nombreProductor varchar(50),
+institucionBancaria varchar(50),
+titularCuenta varchar(50),
+idProductor int not null,
+primary key (id),
+foreign key (idProductor) references productores (id)
+);
+
+
+
+
+
+create table capacitaciones(
+id int not null auto_increment,
+taller varchar(80),
+facilitador varchar(50),
+duracion varchar(50),
+fecha varchar(50),
+idProductor int not null,
+primary key (id),
+foreign key (idProductor) references productores (id)
+);
+
+
+
+create table paqueteNutricion(
+id int not null auto_increment,
+tipo varchar (50),
+año varchar (40),
+cantidad varchar (40),
+idProductor int not null,
+primary key (id),
+foreign key (idProductor) references productores (id)
+);
+
+
+create table paquetePrevencion(
+id int not null, 
+tipo varchar (50),
+año varchar(20),
+cantidad varchar (30),
+idProductor int not null,
+primary key (id),
+foreign key (idProductor) references productores (id)
+);
+
+create table paquetePlantasCafe(
+id int not null auto_increment,
+variedad varchar (50),
+año varchar (20),
+numero varchar (20),
+idProductor int not null,
+primary key (id),
+foreign key (idProductor) references productores (id)
+);
+
+
+create table arbolesSombre(
+id int not null auto_increment,
+variedad varchar(50),
+año varchar (20),
+numero varchar(20),
+idProductor int not null,
+primary key (id),
+foreign key (idProductor) references productores (id)
+);
+
+
+
+create table materialHerramientas(
+id int not null auto_increment,
+tipo varchar (50),
+cantidad varchar (20),
+fecha varchar (20),
+idProductor int not null,
+primary key (id),
+foreign key (idProductor) references productores (id)
+);
+
+
+
+create table equipo (
+id int not null auto_increment,
+tipo varchar (50),
+cantidad varchar (20),
+fecha varchar (20),
+idProductor int not null,
+primary key (id),
+foreign key (idProductor) references productores (id)
+);
+
+
+create table materialVivero(
+id int not null auto_increment,
+bolsasCantidad varchar(30),
+variedad varchar(50),
+fecha varchar(40),
+idProductor int not null,
+primary key (id),
+foreign key (idProductor) references productores (id)
+);
+
+create table beneficioSeco(
+id int not null auto_increment,
+tipo varchar(50),
+fecha varchar(20),
+cantidad varchar(40),
+idProductor int not null,
+primary key (id),
+foreign key (idProductor) references productores (id)
+);
+
+
+create table eventos(
+id int not null auto_increment,
+evento varchar(80),
+fecha varchar(20),
+diasAsistencia varchar(20),
+idProductor int not null,
+primary key (id),
+foreign key (idProductor) references productores(id)
+);
+
+create table ciclosProduccion(
+id int not null auto_increment,
+estimado varchar(50),
+fechaRecepcionMuestra varchar(20),
+fechaEntregaResultados varchar(20),
+fechaEnvioMuestra varchar(20),
+fechaRecepcionResultados varchar(20),
+puntaje varchar (20),
+porcentajeMancha varchar(20),
+cantidadAcopiada varchar (20),
+precioAnticipo varchar (20),
+precioFinal varchar (20),
+humedad varchar(20),
+Rendimiento varchar(50),
+nombreLote varchar(50),
+fechaLote varchar (20),
+comprador varchar(20),
+idProductor int not null,
+primary key (id),
+foreign key (idProductor) references productores(id)
+);

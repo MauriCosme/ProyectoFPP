@@ -1,0 +1,330 @@
+body{
+
+	min-width: 1100px;
+}
+
+#izq{
+	padding-top: 1%;
+	flex-wrap: wrap;
+	width: 20%;
+}
+#cent{
+	flex-wrap: wrap;
+	width: 60%;
+}
+#der{
+	flex-wrap: wrap;
+	width: 20%;
+	
+}
+#fpp{
+
+	width: 100%;
+}
+
+#imgProductor{
+	margin-top: 0px;
+	margin-left: 25%;
+	margin-right: 25%;
+	border-bottom-left-radius: 22px;
+	border-bottom-right-radius: 22px;
+	height: 100%;
+	padding-left: 5%;
+	padding-right: 5%;
+	font-size: 200%; 
+	color: white;
+}
+
+#imgUsuario{
+	margin-top: 0px;
+	margin-left: 25%;
+	margin-right: 25%;
+	border-bottom-left-radius: 22px;
+	border-bottom-right-radius: 22px;
+	height: 60%;
+	padding-left: 5%;
+	padding-right: 5%;
+	font-size: 200%; 
+	color: white;
+}
+
+
+#cerrar{
+	background: #FFC41B  ;
+	color: black;
+	border-radius: 10px;
+	padding-left: 10%;
+	padding-right:10%;
+	border-style: outset;
+  	border: none;
+}
+
+#cerrar:active{
+	border-top-color: #1b435e;
+	filter: grayscale(80%);
+	}
+
+
+
+#usuario{
+	margin-bottom: 0px;
+	font-size: 20px;
+	color: blue;
+	font-weight: bold;
+}
+
+
+#bloque1{
+	width: 100%; 
+	text-align: center;
+	display: flex;
+	flex-wrap: wrap;
+	height: 120px;	
+}
+
+#inic{
+	height: 100%;
+}
+
+
+#btninic{
+	margin-top: 0px;
+	margin-left: 20px;
+	background: #05E119;
+	width: 8%;
+	font-size: 130%;
+}
+
+#nomMorado{
+	width: 50%;
+	color:white;
+	background: #951253;
+	border-radius: 10px;
+	font-size: 190%;
+	margin-left: 25%;
+	margin-top: -40px;
+	text-align: center;
+}
+
+
+
+#bloque2{
+	margin-top: 20px;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	
+	
+}
+
+#mensaje{
+	height: 70%;
+	min-height: 300px;
+	min-width: 500px;
+	width:65%; 
+	border: 2px solid #034159;
+	display: flex;
+	text-align: left;
+	font-size: 140%;
+	flex-wrap: wrap;
+	box-shadow: -2px 2px 20px #65706C;
+	margin-bottom: 20px;
+}
+
+
+#barrabotones{
+
+width: 25%;
+}
+
+
+#d{
+	width: 50%;
+}
+
+#i{
+width: 50%;
+}
+
+.preg{
+	width: 80%;
+/*
+border: 2px solid;*/
+margin-top: 10px;
+margin-left: 80px;
+/*white-space:nowrap;*/
+/* white-space: pre;*/
+}
+
+
+
+.botones{
+	width: 70%;
+	height: 50px;
+	font-size: 160%;
+	border-bottom-right-radius:15px; 
+	border-top-right-radius: 15px;
+	border: 0px solid;
+	margin-top: 10px;
+	background: #043345;
+	color: white;
+	box-shadow: -2px 2px 20px #65706C;
+}
+
+.botones:hover {
+	transform: scale(1.2);
+}
+
+
+#btnEditarDP{
+	
+	width: 20%;
+	height: 35px;
+	background: #A00955;
+	margin-left: 75%;
+	border-radius: 10px;
+	margin-top: 30px;
+	border:0px solid;
+	color: white;
+}
+#editar{
+	
+	width: 20%;
+	height: 35px;
+	background: #A00955;
+	margin-left: 75%;
+	border-radius: 10px;
+	margin-top: 30px;
+	border:0px solid;
+	color: white;
+}
+
+
+
+#btnNuevoCap{
+	width: 20%;
+	height: 35px;
+	background: #A00955;
+	margin-left: 75%;
+	border-radius: 10px;
+	margin-top: 30px;
+	border:0px solid;
+	color: white;
+}
+
+
+#btnAgregarDP{
+	width: 20%;
+	height: 35px;
+	background: #A00955;
+	margin-left: 75%;
+	border-radius: 10px;
+	margin-top: 30px;
+	border:0px solid;
+	color: white;
+}
+
+
+
+input{
+width: 60%;
+border: 0px solid;
+margin-left: 20px;
+color: #0C5FA0;
+
+
+
+}
+
+
+.inputsform{
+	text-align: center;
+
+background: ;
+border: 1px solid;
+margin-top: 5px;
+color: black;
+}
+
+
+.modal-header{
+	background: #0C88AF;
+	border-radius: 5px;
+	width: 100%;
+	color: white
+}
+
+
+#marcoFolioPrestador{
+
+	
+	width: 70%;
+	margin-left: 15%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border-radius: 10px;
+	border:2px solid;
+
+}
+
+h3{
+	text-align: center;
+	background: #951253;
+	margin-top: 0px;
+	border-radius: 5px;
+	width: 100%;
+	color: white;
+}
+
+*{
+
+
+	
+}
+
+
+#filatitulos{
+	height: 10px;
+	border: 1px solid black;
+	background: #1E3540;
+	color: white;
+	
+}
+
+th{
+	text-align: center;
+}
+td{
+	text-align: center;
+	border: 1px solid;
+}
+
+#tablaCapacit{
+	font-size: 68%;
+	width: 90%;
+	margin-left: 5%;
+
+}
+
+
+.divspregunt{
+	
+	width: 100%;
+	display: flex;
+	height: 25px;
+
+}
+
+.btnsInsumos{
+	width: 12%;
+	height: 40px;
+	background: #043345;
+	border-radius: 10px;
+	border: 0px solid;
+	color: white;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+
+	

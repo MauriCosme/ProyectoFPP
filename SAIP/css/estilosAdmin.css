@@ -1,0 +1,108 @@
+#tabla{
+	
+	width: 80%;
+	height: 350px;
+	text-align: center;
+	border: .1px solid gray;
+	overflow: auto;
+}
+
+#bloque1{
+	width: 100%;
+/*	background: gray;*/
+	text-align: center;
+	display: flex;
+	flex-wrap: wrap;
+	
+	
+}
+
+
+#admin{
+	border-top-right-radius: 20px;
+	background: #FF5100;
+	color: white;
+	width: 250px;
+	font-size: 30px;
+}
+
+
+#izq{
+	padding-top: 1%;
+	flex-wrap: wrap;
+	width: 19%;
+	
+}
+#cent{
+	flex-wrap: wrap;
+	width: 59%;
+
+}
+#der{
+	flex-wrap: wrap;
+	width: 20%;
+	
+}
+
+body{
+
+	min-width: 800px;
+}
+
+#imgfpp{
+	width: 100%;
+
+	
+}
+
+
+th{
+text-align: center;
+}
+
+
+#miModal{
+	width: 100%;
+	height: 100%;
+
+
+}
+
+.modal-dialog{
+	border-radius: 100px;
+	width: 500px;
+	height: 500px;
+}
+
+.modal-content{
+	border-radius: 20px;
+	width: 100%;
+	height: 100%;
+}
+
+.modal-header{
+	background: #0C88AF;
+	border-radius: 10px;
+	width: 100%;
+	color: white
+}
+
+.modal-title{
+	width: 100%;
+}
+
+.modal-body{
+	border-radius: 10px;
+	width: 100%;
+	background: white;
+	text-align: center;
+}
+#btnCancelar{
+width: 20%;
+}
+
+button:active {
+   border-top-color: red;
+  filter: grayscale(80%);
+   }
+
