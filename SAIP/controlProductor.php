@@ -215,7 +215,7 @@ if ($accion== "verCapacitaciones") {
 
 $sql = "SELECT * FROM capacitaciones where idProductor='".$id."'";
 	$tbl = $conex->query($sql);
-
+	echo  "<div class='TitulosMensajes'><img src='img/cap.png'  class='imgsInsumos'>&nbsp;&nbsp;&nbsp;&nbsp;<p id='TT'>Capacitaciones</p></div>";
 	echo "<button id='btnNuevoCap' data-toggle='modal' data-target='#modalAgregarCAP' onclick='cambiarTituloModalCAP(".$id.")'>Nuevo</button><br><br><br>";
 	echo "<table id='tablaCapacit' class='table table-condensed'>
 	<thead class='thead-dark '>
@@ -322,7 +322,7 @@ if ($accion== "verNutricion") {
 
 $sql = "SELECT * FROM paquetenutricion where idProductor='".$id."'";
 	$tbl = $conex->query($sql);
-
+	echo  "<div class='TitulosMensajes'><img src='img/nutri.png'  class='imgsInsumos'>&nbsp;&nbsp;&nbsp;&nbsp;<p id='TT'>Paquetes de Nutrición</p></div>";
 	echo "<button id='btnNuevoCap' data-toggle='modal' data-target='#modalAgregarNutricion' onclick='cambiarTituloModalNut(".$id.")'>Nuevo</button><br><br><br>";
 	echo "<table id='tablaCapacit' class='table table-condensed'>
 	<thead class='thead-dark '>
@@ -420,7 +420,7 @@ if ($accion== "verPrevencion") {
 
 $sql = "SELECT * FROM paqueteprevencion where idProductor='".$id."'";
 	$tbl = $conex->query($sql);
-
+	echo  "<div class='TitulosMensajes'><img src='img/prevencion.png'  class='imgsInsumos'>&nbsp;&nbsp;&nbsp;&nbsp;<p id='TT'>Paquetes de Prevención</p></div>";
 	echo "<button id='btnNuevoCap' data-toggle='modal' data-target='#modalAgregarPrevencion' onclick='cambiarTituloModalPrev(".$id.")'>Nuevo</button><br><br><br>";
 	echo "<table id='tablaCapacit' class='table table-condensed'>
 	<thead class='thead-dark '>
@@ -472,7 +472,7 @@ if ($accion == "+Prev"){
 }
 else{
 
-	 echo"<script> alert('Rellena todos los campos para poder agregar un paquete de nutrición');</script>";
+	 echo"<script> alert('Rellena todos los campos para poder agregar un paquete de Prevención');</script>";
 	 echo "OK";
 }
 }
@@ -517,7 +517,7 @@ if ($accion== "verCafe") {
 
 $sql = "SELECT * FROM paqueteplantascafe where idProductor='".$id."'";
 	$tbl = $conex->query($sql);
-
+	echo  "<div class='TitulosMensajes'><img src='img/cafe.png'  class='imgsInsumos'>&nbsp;&nbsp;&nbsp;&nbsp;<p id='TT'>Plantas de café</p></div>";
 	echo "<button id='btnNuevoCap' data-toggle='modal' data-target='#modalAgregarCafe' onclick='cambiarTituloModalCafe(".$id.")'>Nuevo</button><br><br><br>";
 	echo "<table id='tablaCapacit' class='table table-condensed'>
 	<thead class='thead-dark '>
@@ -569,7 +569,7 @@ if ($accion == "+Cafe"){
 }
 else{
 
-	 echo"<script> alert('Rellena todos los campos para poder agregar un paquete de nutrición');</script>";
+	 echo"<script> alert('Rellena todos los campos para poder agregar una planta de cafe');</script>";
 	 echo "OK";
 }
 }
@@ -606,6 +606,406 @@ if($accion=="-Cafe"){
 	echo "OK";
 }
 
+
+
+
+if ($accion== "verSombra") {
+	$sql = "SELECT * FROM arbolessombra where idProductor='".$id."'";
+		$tbl = $conex->query($sql);
+		echo  "<div class='TitulosMensajes'><img src='img/sombra.png'  class='imgsInsumos'>&nbsp;&nbsp;&nbsp;&nbsp;<p id='TT'>Árboles de sombra</p></div>";
+		echo "<button id='btnNuevoCap' data-toggle='modal' data-target='#modalAgregarSombra' onclick='cambiarTituloModalSombra(".$id.")'>Nuevo</button><br><br><br>";
+		echo "<table id='tablaCapacit' class='table table-condensed'>
+		<thead class='thead-dark '>
+			<tr id='filatitulos'>
+				<th>No.</th>
+				<th>Variedad</th>
+				<th>Año</th>
+				<th>Cantidad</th>
+				<th colspan='2'>Opciones</th>
+			</tr>
+		</thead>
+		";
+		while ($row = $tbl->fetch_array()){
+			echo"
+			<TR>
+				<td>".$row["id"]."</td>
+				<td>".$row["variedad"]."</td>
+				<td>".$row["anio"]."</td>
+				<td>".$row["cantidad"]."</td>
+				<td><button type='button' class='btn btn-danger' onclick = 'eliminarSombra(".$row["id"].")'>Eliminar</button></td>
+				<td><button type='button' class='btn btn-warning' data-toggle='modal' data-target='#modalAgregarSombra' onclick = 'editarSombra(".$row["id"].",
+									\"".$row['variedad']."\",
+									\"".$row['anio']."\",
+									\"".$row['cantidad']."\"
+									)'>Editar</button></td>
+			</TR>";
+	}
+		echo"</table>";
+	}
+
+	if ($accion == "+Sombra"){
+		$SombraId = $_POST["id"];
+ 		$SombraVariedad = $_POST["variedad"];
+ 		$SombraAnio = $_POST["anio"];
+ 		$SombraCantidad = $_POST["cantidad"];
+ 		if($SombraVariedad == true and $SombraAnio == true and $SombraCantidad == true){
+			$sql = "insert into arbolessombra (variedad, anio, cantidad, idProductor)
+					values ('$SombraVariedad','$SombraAnio','$SombraCantidad','$SombraId')";
+	$conex->query($sql);
+	echo "OK";
+}
+else{
+
+	 echo"<script> alert('Rellena todos los campos para poder agregar un arbol de sombra');</script>";
+	 echo "OK";
+}
+}
+
+if ($accion == "aSombra") {				//para actualizar utilizamos el id del registro de la tabla no del usuario
+	$idSombra = $_POST["id"];
+	$VariedadSombra = $_POST["variedad"];
+	$anioSombra = $_POST["anio"];
+	$cantidadSombra = $_POST["cantidad"];
+	
+	$sql = "update arbolessombra set
+	 id='".$idSombra."',
+	 variedad='".$VariedadSombra."',
+	 anio='".$anioSombra."',
+	 cantidad='" .$cantidadSombra."'
+
+	   where id='".$idSombra."'";
+
+	   $conex->query($sql);
+
+	   echo "OK";
+	
+}
+
+
+if($accion=="-Sombra"){
+	$id = $_POST["id"];
+	$sql ="delete from arbolessombra where id=".$id;
+	$conex->query($sql);
+	echo "OK";
+}
+
+if ($accion== "verMaterial") {
+	$sql = "SELECT * FROM materialherramientas where idProductor='".$id."'";
+		$tbl = $conex->query($sql);
+		echo  "<div class='TitulosMensajes'><img src='img/material.png'  class='imgsInsumos'>&nbsp;&nbsp;&nbsp;&nbsp;<p id='TT'>Material o herramientas</p></div>";
+		echo "<button id='btnNuevoCap' data-toggle='modal' data-target='#modalAgregarMaterial' onclick='cambiarTituloModalMaterial(".$id.")'>Nuevo</button><br><br><br>";
+		echo "<table id='tablaCapacit' class='table table-condensed'>
+		<thead class='thead-dark '>
+			<tr id='filatitulos'>
+				<th>No.</th>
+				<th>Tipo de Material o herramienta</th>     
+				<th>Año</th>
+				<th>Cantidad</th>
+				<th colspan='2'>Opciones</th>
+			</tr>
+		</thead>
+		";
+		while ($row = $tbl->fetch_array()){
+			echo"
+			<TR>
+				<td>".$row["id"]."</td>
+				<td>".$row["variedad"]."</td>
+				<td>".$row["anio"]."</td>
+				<td>".$row["cantidad"]."</td>
+				<td><button type='button' class='btn btn-danger' onclick = 'eliminarMaterial(".$row["id"].")'>Eliminar</button></td>
+				<td><button type='button' class='btn btn-warning' data-toggle='modal' data-target='#modalAgregarMaterial' onclick = 'editarMaterial(".$row["id"].",
+									\"".$row['variedad']."\",
+									\"".$row['anio']."\",
+									\"".$row['cantidad']."\"
+									)'>Editar</button></td>
+			</TR>";
+	}
+		echo"</table>";
+	}
+
+
+	if ($accion == "+Material"){
+		$MaterialId = $_POST["id"];
+ 		$MaterialVariedad = $_POST["variedad"];
+ 		$MaterialAnio = $_POST["anio"];
+ 		$MaterialCantidad = $_POST["cantidad"];
+ 		if($MaterialVariedad == true and $MaterialAnio == true and $MaterialCantidad == true){
+			$sql = "insert into materialherramientas (variedad, anio, cantidad, idProductor)
+					values ('$MaterialVariedad','$MaterialAnio','$MaterialCantidad','$MaterialId')";
+		$conex->query($sql);
+		echo "OK";
+		}else{
+	 echo"<script> alert('Rellena todos los campos para poder agregar un nuevo material');</script>";
+	 echo "OK";
+				}
+	}
+
+	if ($accion == "aMaterial") {				//para actualizar utilizamos el id del registro de la tabla no del usuario
+		$idMaterial = $_POST["id"];
+		$VariedadMaterial = $_POST["variedad"];
+		$anioMaterial = $_POST["anio"];
+		$cantidadMaterial = $_POST["cantidad"];
+	
+		$sql = "update materialherramientas set
+		 id='".$idMaterial."',
+		 variedad='".$VariedadMaterial."',
+		 anio='".$anioMaterial."',
+		 cantidad='" .$cantidadMaterial."'
+
+		   where id='".$idMaterial."'";
+
+		   $conex->query($sql);
+
+		   echo "OK";
+	
+}
+
+if($accion=="-Material"){
+	$id = $_POST["id"];
+	$sql ="delete from materialherramientas where id=".$id;
+	$conex->query($sql);
+	echo "OK";
+}
+
+if ($accion== "verEquipo") {
+	$sql = "SELECT * FROM equipo where idProductor='".$id."'";
+		$tbl = $conex->query($sql);
+		echo  "<div class='TitulosMensajes'><img src='img/equipo1.png'  class='imgsInsumos'>&nbsp;&nbsp;&nbsp;&nbsp;<p id='TT'>Equipo</p></div>";
+		echo "<button id='btnNuevoCap' data-toggle='modal' data-target='#modalAgregarEquipo' onclick='cambiarTituloModalEquipo(".$id.")'>Nuevo</button><br><br><br>";
+		echo "<table id='tablaCapacit' class='table table-condensed'>
+		<thead class='thead-dark '>
+			<tr id='filatitulos'>
+				<th>No.</th>
+				<th>Tipo de equipo</th>     
+				<th>Año</th>
+				<th>Cantidad</th>
+				<th colspan='2'>Opciones</th>
+			</tr>
+		</thead>
+		";
+		while ($row = $tbl->fetch_array()){
+			echo"
+			<TR>
+				<td>".$row["id"]."</td>
+				<td>".$row["variedad"]."</td>
+				<td>".$row["anio"]."</td>
+				<td>".$row["cantidad"]."</td>
+				<td><button type='button' class='btn btn-danger' onclick = 'eliminarEquipo(".$row["id"].")'>Eliminar</button></td>
+				<td><button type='button' class='btn btn-warning' data-toggle='modal' data-target='#modalAgregarEquipo' onclick = 'editarEquipo(".$row["id"].",
+									\"".$row['variedad']."\",
+									\"".$row['anio']."\",
+									\"".$row['cantidad']."\"
+									)'>Editar</button></td>
+			</TR>";
+	}
+		echo"</table>";
+	}
+
+	if ($accion == "+Equipo"){
+		$EquipoId = $_POST["id"];
+ 		$EquipoVariedad = $_POST["variedad"];
+ 		$EquipoAnio = $_POST["anio"];
+ 		$EquipoCantidad = $_POST["cantidad"];
+ 		if($EquipoVariedad == true and $EquipoAnio == true and $EquipoCantidad == true){
+			$sql = "insert into equipo (variedad, anio, cantidad, idProductor)
+					values ('$EquipoVariedad','$EquipoAnio','$EquipoCantidad','$EquipoId')";
+		$conex->query($sql);
+		echo "OK";
+		}else{
+		 echo"<script> alert('Rellena todos los campos para poder agregar un nuevo equipo');</script>";
+		 echo "OK";
+				}
+	}
+
+	if ($accion == "aEquipo") {				//para actualizar utilizamos el id del registro de la tabla no del usuario
+		$idEquipo = $_POST["id"];
+		$VariedadEquipo = $_POST["variedad"];
+		$anioEquipo = $_POST["anio"];
+		$cantidadEquipo = $_POST["cantidad"];
+	
+		$sql = "update equipo set
+		 id='".$idEquipo."',
+		 variedad='".$VariedadEquipo."',
+		 anio='".$anioEquipo."',
+		 cantidad='" .$cantidadEquipo."'
+
+		   where id='".$idEquipo."'";
+
+		   $conex->query($sql);
+		   echo "OK";
+	
+}
+
+
+if($accion=="-Equipo"){
+	$id = $_POST["id"];
+	$sql ="delete from equipo where id=".$id;
+	$conex->query($sql);
+	echo "OK";
+}
+
+
+if ($accion== "verVivero") {
+	$sql = "SELECT * FROM materialvivero where idProductor='".$id."'";
+		$tbl = $conex->query($sql);
+		echo  "<div class='TitulosMensajes'><img src='img/vivero.png'  class='imgsInsumos'>&nbsp;&nbsp;&nbsp;&nbsp;<p id='TT'>Material para vivero</p></div>";
+		echo "<button id='btnNuevoCap' data-toggle='modal' data-target='#modalAgregarVivero' onclick='cambiarTituloModalVivero(".$id.")'>Nuevo</button><br><br><br>";
+		echo "<table id='tablaCapacit' class='table table-condensed'>
+		<thead class='thead-dark '>
+			<tr id='filatitulos'>
+				<th>No.</th>
+				<th>Tipo de producto</th>
+				<th>Año</th>
+				<th>Cantidad</th>
+				<th colspan='2'>Opciones</th>
+			</tr>
+		</thead>
+		";
+		while ($row = $tbl->fetch_array()){
+	echo"
+	<TR>
+		<td>".$row["id"]."</td>
+		<td>".$row["variedad"]."</td>
+		<td>".$row["anio"]."</td>
+		<td>".$row["cantidad"]."</td>
+		<td><button type='button' class='btn btn-danger' onclick = 'eliminarVivero(".$row["id"].")'>Eliminar</button></td>
+		<td><button type='button' class='btn btn-warning' data-toggle='modal' data-target='#modalAgregarVivero' onclick = 'editarVivero(".$row["id"].",
+									\"".$row['variedad']."\",
+									\"".$row['anio']."\",
+									\"".$row['cantidad']."\"
+	
+									
+									)'>Editar</button></td>
+	</TR>";
+	}
+	echo"
+	</table>
+	";
+	}
+
+	if ($accion == "+Vivero"){
+		$ViveroId = $_POST["id"];
+ 		$ViveroVariedad = $_POST["variedad"];
+ 		$ViveroAnio = $_POST["anio"];
+ 		$ViveroCantidad = $_POST["cantidad"];
+ 		if($ViveroVariedad == true and $ViveroAnio == true and $ViveroCantidad == true){
+			$sql = "insert into materialvivero (variedad, anio, cantidad, idProductor)
+					values ('$ViveroVariedad','$ViveroAnio','$ViveroCantidad','$ViveroId')";
+		$conex->query($sql);
+		echo "OK";
+		}else{
+		 echo"<script> alert('Rellena todos los campos para poder agregar nuevo material para vivero');</script>";
+		 echo "OK";
+				}
+	}
+
+
+	if ($accion == "aVivero") {				//para actualizar utilizamos el id del registro de la tabla no del usuario
+		$idVivero = $_POST["id"];
+		$VariedadVivero = $_POST["variedad"];
+		$anioVivero = $_POST["anio"];
+		$cantidadVivero = $_POST["cantidad"];
+	
+		$sql = "update materialvivero set
+		 id='".$idVivero."',
+		 variedad='".$VariedadVivero."',
+		 anio='".$anioVivero."',
+		 cantidad='" .$cantidadVivero."'
+
+		   where id='".$idVivero."'";
+
+		   $conex->query($sql);
+		   echo "OK";
+	
+}
+
+if($accion=="-Vivero"){
+	$id = $_POST["id"];
+	$sql ="delete from materialvivero where id=".$id;
+	$conex->query($sql);
+	echo "OK";
+}
+
+
+
+
+if ($accion== "verSeco") {
+	$sql = "SELECT * FROM beneficioseco where idProductor='".$id."'";
+		$tbl = $conex->query($sql);
+		echo  "<div class='TitulosMensajes'><img src='img/seco.png'  class='imgsInsumos'>&nbsp;&nbsp;&nbsp;&nbsp;<p id='TT'>Beneficio seco</p></div>";
+		echo "<button id='btnNuevoCap' data-toggle='modal' data-target='#modalAgregarSeco' onclick='cambiarTituloModalSeco(".$id.")'>Nuevo</button><br><br><br>";
+		echo "<table id='tablaCapacit' class='table table-condensed'>
+		<thead class='thead-dark '>
+			<tr id='filatitulos'>
+				<th>No.</th>
+				<th>Tipo de producto</th>
+				<th>Año</th>
+				<th>Cantidad</th>
+				<th colspan='2'>Opciones</th>
+			</tr>
+		</thead>
+		";
+		while ($row = $tbl->fetch_array()){
+	echo"
+	<TR>
+		<td>".$row["id"]."</td>
+		<td>".$row["variedad"]."</td>
+		<td>".$row["anio"]."</td>
+		<td>".$row["cantidad"]."</td>
+		<td><button type='button' class='btn btn-danger' onclick = 'eliminarSeco(".$row["id"].")'>Eliminar</button></td>
+		<td><button type='button' class='btn btn-warning' data-toggle='modal' data-target='#modalAgregarSeco' onclick = 'editarSeco(".$row["id"].",
+									\"".$row['variedad']."\",
+									\"".$row['anio']."\",
+									\"".$row['cantidad']."\"
+									)'>Editar</button></td>
+	</TR>";
+	}
+	echo"</table>";
+	}
+
+	if ($accion == "+Seco"){
+		$SecoId = $_POST["id"];
+ 		$SecoVariedad = $_POST["variedad"];
+ 		$SecoAnio = $_POST["anio"];
+ 		$SecoCantidad = $_POST["cantidad"];
+ 		if($SecoVariedad == true and $SecoAnio == true and $SecoCantidad == true){
+			$sql = "insert into beneficioseco (variedad, anio, cantidad, idProductor)
+					values ('$SecoVariedad','$SecoAnio','$SecoCantidad','$SecoId')";
+		$conex->query($sql);
+		echo "OK";
+		}else{
+		 echo"<script> alert('Rellena todos los campos para poder agregar nuevo beneficio seco');</script>";
+		 echo "OK";
+				}
+	}
+
+
+	
+	if ($accion == "aSeco") {				//para actualizar utilizamos el id del registro de la tabla no del usuario
+		$idSeco = $_POST["id"];
+		$VariedadSeco = $_POST["variedad"];
+		$anioSeco = $_POST["anio"];
+		$cantidadSeco = $_POST["cantidad"];
+	
+		$sql = "update beneficioseco set
+		 id='".$idSeco."',
+		 variedad='".$VariedadSeco."',
+		 anio='".$anioSeco."',
+		 cantidad='" .$cantidadSeco."'
+
+		   where id='".$idSeco."'";
+
+		   $conex->query($sql);
+		   echo "OK";
+	
+}
+
+if($accion=="-Seco"){
+	$id = $_POST["id"];
+	$sql ="delete from beneficioseco where id=".$id;
+	$conex->query($sql);
+	echo "OK";
+}
 
    ?>
 

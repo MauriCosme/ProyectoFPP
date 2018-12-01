@@ -50,11 +50,11 @@ $nombre = $_POST['nombre'];
 				<button class="btnsInsumos" onclick="CambColor1(), verNutricion()" type="button" id="btnNutri">Nutricion</button>
 				<button class="btnsInsumos" onclick="CambColor2(), verPrevencion()" type="button" id="btnPreven">Prevención</button>
 				<button class="btnsInsumos" onclick="CambColor3(), verCafe()" type="button" id="btnCafe">Plantas de cafe</button>
-				<button class="btnsInsumos" onclick="CambColor4()" type="button" id="btnSombra">Arboles de Sombra</button>
-				<button class="btnsInsumos" onclick="CambColor5()" type="button" id="btnMat">Material o herramientas</button>
-				<button class="btnsInsumos" onclick="CambColor6()" type="button" id="btnEquip">Equipo</button>
-				<button class="btnsInsumos" onclick="CambColor7()" type="button" id="btnVivero">Material para vivero</button>
-				<button class="btnsInsumos" onclick="CambColor8()" type="button" id="btnBenefic">Beneficio seco</button>
+				<button class="btnsInsumos" onclick="CambColor4(), verSombra()" type="button" id="btnSombra">Arboles de Sombra</button>
+				<button class="btnsInsumos" onclick="CambColor5(), verMaterial()" type="button" id="btnMat">Material/herramientas</button>
+				<button class="btnsInsumos" onclick="CambColor6(), verEquipo()" type="button" id="btnEquip">Equipo</button>
+				<button class="btnsInsumos" onclick="CambColor7(), verVivero()" type="button" id="btnVivero">Material para vivero</button>
+				<button class="btnsInsumos" onclick="CambColor8(), verSeco()" type="button" id="btnBenefic">Beneficio seco</button>
 
 			</div>
 		</center>
@@ -63,7 +63,6 @@ $nombre = $_POST['nombre'];
 
 
 	<div id="bloque2">
-
 		<div id="barrabotones">
 				<button id="btn1" class="botones" onclick="pBTN1(), ver(), ocultarBTNIns()">
 				Datos Generales
@@ -90,10 +89,7 @@ $nombre = $_POST['nombre'];
 				</button>
 				
 		</div>
-
 		<div id="mensaje">
-
-
 						<!-- aqui van los datos -->
 		</div>
 		<center>
@@ -147,9 +143,6 @@ $nombre = $_POST['nombre'];
 			  </div>
 			</div>
 		</center>
-
-
-
 		<div class="modal fade" id="EditarDP" tabindex="-1" role="dialog" aria-labelledby="EditarDP" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 			    <div class="modal-content">
@@ -181,7 +174,6 @@ $nombre = $_POST['nombre'];
 			    </div>
 			</div>
 		</div>
-
 		<div class="modal fade" id="modalAgregarCAP" tabindex="-1" role="dialog" aria-labelledby="modalAgregarCAp" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 			    <div class="modal-content">
@@ -217,7 +209,6 @@ $nombre = $_POST['nombre'];
 			    </div>
 			</div>
 		</div>
-
 		<div class="modal fade" id="modalAgregarNutricion" tabindex="-1" role="dialog" aria-labelledby="modalAgregarNutricion" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 			    <div class="modal-content">
@@ -251,9 +242,7 @@ $nombre = $_POST['nombre'];
 			    </div>
 			</div>
 		</div>
-
-
-		<div class="modal fade" id="modalAgregarPrevencion" tabindex="-1" role="dialog" aria-labelledby="modalAgregarNutricion" aria-hidden="true">
+		<div class="modal fade" id="modalAgregarPrevencion" tabindex="-1" role="dialog" aria-labelledby="modalAgregarPrevencion" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 			    <div class="modal-content">
 			    	<center> 
@@ -286,8 +275,7 @@ $nombre = $_POST['nombre'];
 			    </div>
 			</div>
 		</div>
-
-<div class="modal fade" id="modalAgregarCafe" tabindex="-1" role="dialog" aria-labelledby="modalAgregarCafe" aria-hidden="true">
+		<div class="modal fade" id="modalAgregarCafe" tabindex="-1" role="dialog" aria-labelledby="modalAgregarCafe" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 			    <div class="modal-content">
 			    	<center> 
@@ -320,11 +308,746 @@ $nombre = $_POST['nombre'];
 			    </div>
 			</div>
 		</div>
+		<div class="modal fade" id="modalAgregarSombra" tabindex="-1" role="dialog" aria-labelledby="modalAgregarSombra" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			    	<center> 
+			    	<div class="modal-header">
+			     		<h4 id="ModalTituloSombra"> Agregando:</h4>
+			     	</div>
+
+			     	<div id="cuerpo" class="modal-body">
+				      	<input value=<?php echo $id;  ?> class="inputsform" type="" name="" id="txtIdSombra">
+				      	<br>
+				      	<strong>Variedad:</strong><br> <input class="inputsform" type="" name="" id="txtSombraVariedad">
+				      	<br>
+				      	<strong>Año:</strong><br> <input class="inputsform" type="" name="" id="txtSombraAño">
+				      	<br>
+				      	<strong>Cantidad:</strong> <br><input class="inputsform" type="" name="" id="txtSombraCant">
+				      	<br>
+				      	<br>
+				      	<br>
+				      	<button id="btnAgSombra" class="btn btn-primary" class='btn btn-danger' data-dismiss="modal" onclick="agregarSombra()">
+				      		Agregar
+				      	</button>
+						<button id="btnAcSombra" class="btn btn-primary" class='btn btn-danger'  data-dismiss="modal" onclick="actuSombra()">
+							Actualizar
+						</button>
+						<button id="btnCancelar" type="button" class='btn btn-danger'  data-dismiss="modal" >
+				       		Cancelar
+				      	</button>
+			    	</div>
+			    	</center>
+			    </div>
+			</div>
+		</div>
+		<div class="modal fade" id="modalAgregarMaterial" tabindex="-1" role="dialog" aria-labelledby="modalAgregarMaterial" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			    	<center> 
+			    	<div class="modal-header">
+			     		<h4 id="ModalTituloMaterial"> Agregando:</h4>
+			     	</div>
+
+			     	<div id="cuerpo" class="modal-body">
+				      	<input value=<?php echo $id;  ?> class="inputsform" type="" name="" id="txtIdMaterial">
+				      	<br>
+				      	<strong>Tipo de Material o herramienta:</strong><br> <input class="inputsform" type="" name="" id="txtMaterialVariedad">
+				      	<br>
+				      	<strong>Año:</strong><br> <input class="inputsform" type="" name="" id="txtMaterialAño">
+				      	<br>
+				      	<strong>Cantidad:</strong> <br><input class="inputsform" type="" name="" id="txtMaterialCant">
+				      	<br>
+				      	<br>
+				      	<br>
+				      	<button id="btnAgMaterial" class="btn btn-primary" class='btn btn-danger' data-dismiss="modal" onclick="agregarMaterial()">
+				      		Agregar
+				      	</button>
+						<button id="btnAcMaterial" class="btn btn-primary" class='btn btn-danger'  data-dismiss="modal" onclick="actuMaterial()">
+							Actualizar
+						</button>
+						<button id="btnCancelar" type="button" class='btn btn-danger'  data-dismiss="modal" >
+				       		Cancelar
+				      	</button>
+			    	</div>
+			    	</center>
+			    </div>
+			</div>
+		</div>
+		<div class="modal fade" id="modalAgregarEquipo" tabindex="-1" role="dialog" aria-labelledby="modalAgregarEquipo" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			    	<center> 
+			    	<div class="modal-header">
+			     		<h4 id="ModalTituloEquipo"> Agregando:</h4>
+			     	</div>
+
+			     	<div id="cuerpo" class="modal-body">
+				      	<input value=<?php echo $id;  ?> class="inputsform" type="" name="" id="txtIdEquipo">
+				      	<br>
+				      	<strong>Tipo de equipo:</strong><br> <input class="inputsform" type="" name="" id="txtEquipoVariedad">
+				      	<br>
+				      	<strong>Año:</strong><br> <input class="inputsform" type="" name="" id="txtEquipoAño">
+				      	<br>
+				      	<strong>Cantidad:</strong> <br><input class="inputsform" type="" name="" id="txtEquipoCant">
+				      	<br>
+				      	<br>
+				      	<br>
+				      	<button id="btnAgEquipo" class="btn btn-primary" class='btn btn-danger' data-dismiss="modal" onclick="agregarEquipo()">
+				      		Agregar
+				      	</button>
+						<button id="btnAcEquipo" class="btn btn-primary" class='btn btn-danger'  data-dismiss="modal" onclick="actuEquipo()">
+							Actualizar
+						</button>
+						<button id="btnCancelar" type="button" class='btn btn-danger'  data-dismiss="modal" >
+				       		Cancelar
+				      	</button>
+			    	</div>
+			    	</center>
+			    </div>
+			</div>
+		</div>
+		<div class="modal fade" id="modalAgregarVivero" tabindex="-1" role="dialog" aria-labelledby="modalAgregarVivero" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			    	<center> 
+			    	<div class="modal-header">
+			     		<h4 id="ModalTituloVivero"> Agregando:</h4>
+			     	</div>
+
+			     	<div id="cuerpo" class="modal-body">
+				      	<input value=<?php echo $id;  ?> class="inputsform" type="" name="" id="txtIdVivero">
+				      	<br>
+				      	<strong>Tipo de material:</strong><br> <input class="inputsform" type="" name="" id="txtViveroVariedad">
+				      	<br>
+				      	<strong>Año:</strong><br> <input class="inputsform" type="" name="" id="txtViveroAño">
+				      	<br>
+				      	<strong>Cantidad:</strong> <br><input class="inputsform" type="" name="" id="txtViveroCant">
+				      	<br>
+				      	<br>
+				      	<br>
+				      	<button id="btnAgVivero" class="btn btn-primary" class='btn btn-danger' data-dismiss="modal" onclick="agregarVivero()">
+				      		Agregar
+				      	</button>
+						<button id="btnAcVivero" class="btn btn-primary" class='btn btn-danger'  data-dismiss="modal" onclick="actuVivero()">
+							Actualizar
+						</button>
+						<button id="btnCancelar" type="button" class='btn btn-danger'  data-dismiss="modal" >
+				       		Cancelar
+				      	</button>
+			    	</div>
+			    	</center>
+			    </div>
+			</div>
+		</div>
+		<div class="modal fade" id="modalAgregarSeco" tabindex="-1" role="dialog" aria-labelledby="modalAgregarSeco" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			    	<center> 
+			    	<div class="modal-header">
+			     		<h4 id="ModalTituloSeco"> Agregando:</h4>
+			     	</div>
+
+			     	<div id="cuerpo" class="modal-body">
+				      	<input value=<?php echo $id;  ?> class="inputsform" type="" name="" id="txtIdSeco">
+				      	<br>
+				      	<strong>Tipo de producto:</strong><br> <input class="inputsform" type="" name="" id="txtSecoVariedad">
+				      	<br>
+				      	<strong>Año:</strong><br> <input class="inputsform" type="" name="" id="txtSecoAño">
+				      	<br>
+				      	<strong>Cantidad:</strong> <br><input class="inputsform" type="" name="" id="txtSecoCant">
+				      	<br>
+				      	<br>
+				      	<br>
+				      	<button id="btnAgSeco" class="btn btn-primary" class='btn btn-danger' data-dismiss="modal" onclick="agregarSeco()">
+				      		Agregar
+				      	</button>
+						<button id="btnAcSeco" class="btn btn-primary" class='btn btn-danger'  data-dismiss="modal" onclick="actuSeco()">
+							Actualizar
+						</button>
+						<button id="btnCancelar" type="button" class='btn btn-danger'  data-dismiss="modal" >
+				       		Cancelar
+				      	</button>
+			    	</div>
+			    	</center>
+			    </div>
+			</div>
+		</div>
+
 
 	</div>
 </body>
 </html>
 <script type="text/javascript">
+
+function eliminarSeco(id){
+	var parametros = {
+		"accion" : "-Seco",
+ 		"id": id
+	};
+	$.ajax({
+						data: parametros,
+						url:'controlProductor.php',
+						type:'POST',
+						beforeSend: function(){
+							$("#mensaje").html("...");
+						}, 
+						success: function (response){
+							$("#mensaje").html(response);
+							if (response.indexOf("OK")>=0){
+								verSeco();
+							}
+								}
+							});
+							}
+
+function actuSeco(){
+		var parametros = {
+			"accion"  : "aSeco",
+				"id": $("#txtIdSeco").val(),
+			 "variedad" : $("#txtSecoVariedad").val(),
+			 "anio" : $("#txtSecoAño").val(),
+			 "cantidad" : $("#txtSecoCant").val()			 			 
+	};
+	$.ajax({
+						data: parametros,
+						url:'controlProductor.php',
+						type:'POST',
+						beforeSend: function(){
+							$("#mensaje").html("...");
+						}, 
+						success: function (response){
+							$("#mensaje").html(response);
+							if (response.indexOf("OK")>=0){
+								verSeco();		
+							}
+								}
+							});
+	}
+
+function editarSeco(id, variedad, anio, cantidad){
+		$("#ModalTituloSeco").html("Editando datos de beneficio seco");
+		$("#btnAgSeco").hide();
+		$("#btnAcSeco").show();
+		$("#txtIdSeco").val(id);
+		$("#txtSecoVariedad").val(variedad);
+		$("#txtSecoAño").val(anio);
+		$("#txtSecoCant").val(cantidad);				
+}
+
+
+
+function cambiarTituloModalSeco(id){
+	$("#txtIdSeco").val(id);
+	$("#ModalTituloSeco").html("Agregando Beneficio Seco");
+	$("#btnAcSeco").hide();
+	$("#btnAgSeco").show();
+	$("#txtSecoVariedad").val("");
+	$("#txtSecoAño").val("");
+	$("#txtSecoCant").val("");
+}
+
+
+function agregarSeco(){
+	var parametros = {
+		"accion"  : "+Seco",
+			"id": $("#txtIdSeco").val(),
+		 "variedad" : $("#txtSecoVariedad").val(),
+		 "anio" : $("#txtSecoAño").val(),
+		 "cantidad" : $("#txtSecoCant").val()
+		};
+		$.ajax({
+					data: parametros,
+					url:'controlProductor.php',
+					type:'POST',
+					beforeSend: function(){
+						$("#mensaje").html("...");
+					}, 
+					success: function (response){
+						$("#mensaje").html(response);
+						if (response.indexOf("OK")>=0){
+							verSeco();
+						}
+							}
+						});
+}
+
+function verSeco(){
+	var parametros={				
+			"accion" : "verSeco",
+			"id": <?php echo $id ?>
+				};
+		$.ajax({
+			data: parametros,
+			url:'controlProductor.php',
+			type:'POST',
+			beforeSend: function(){
+				$("#divBaseTabla").html("Espere un momento...");
+								  },
+			success: function (response){
+				if (response!="OK"){
+					$("#mensaje").html(response);
+									}
+										} 
+						});
+}
+
+
+
+function eliminarVivero(id){
+	var parametros = {
+		"accion" : "-Vivero",
+ 		"id": id
+	};
+	$.ajax({
+						data: parametros,
+						url:'controlProductor.php',
+						type:'POST',
+						beforeSend: function(){
+							$("#mensaje").html("...");
+						}, 
+						success: function (response){
+							$("#mensaje").html(response);
+							if (response.indexOf("OK")>=0){
+								verVivero();
+							}
+								}
+							});
+							}
+
+function actuVivero(){
+		var parametros = {
+			"accion"  : "aVivero",
+				"id": $("#txtIdVivero").val(),
+			 "variedad" : $("#txtViveroVariedad").val(),
+			 "anio" : $("#txtViveroAño").val(),
+			 "cantidad" : $("#txtViveroCant").val()			 			 
+	};
+	$.ajax({
+						data: parametros,
+						url:'controlProductor.php',
+						type:'POST',
+						beforeSend: function(){
+							$("#mensaje").html("...");
+						}, 
+						success: function (response){
+							$("#mensaje").html(response);
+							if (response.indexOf("OK")>=0){
+								verVivero();		
+							}
+								}
+							});
+	}
+
+function editarVivero(id, variedad, anio, cantidad){
+		$("#ModalTituloVivero").html("Editando datos de Material para Vivero");
+		$("#btnAgVivero").hide();
+		$("#btnAcVivero").show();
+		$("#txtIdVivero").val(id);
+		$("#txtViveroVariedad").val(variedad);
+		$("#txtViveroAño").val(anio);
+		$("#txtViveroCant").val(cantidad);				
+}
+
+function cambiarTituloModalVivero(id){
+	$("#txtIdVivero").val(id);
+	$("#ModalTituloVivero").html("Agregando Material para vivero");
+	$("#btnAcVivero").hide();
+	$("#btnAgVivero").show();
+	$("#txtViveroVariedad").val("");
+	$("#txtViveroAño").val("");
+	$("#txtViveroCant").val("");
+}
+
+
+function agregarVivero(){
+	var parametros = {
+		"accion"  : "+Vivero",
+			"id": $("#txtIdVivero").val(),
+		 "variedad" : $("#txtViveroVariedad").val(),
+		 "anio" : $("#txtViveroAño").val(),
+		 "cantidad" : $("#txtViveroCant").val()
+		};
+		$.ajax({
+					data: parametros,
+					url:'controlProductor.php',
+					type:'POST',
+					beforeSend: function(){
+						$("#mensaje").html("...");
+					}, 
+					success: function (response){
+						$("#mensaje").html(response);
+						if (response.indexOf("OK")>=0){
+							verVivero();
+						}
+							}
+						});
+}
+
+function verVivero(){
+	var parametros={				
+			"accion" : "verVivero",
+			"id": <?php echo $id ?>
+				};
+		$.ajax({
+			data: parametros,
+			url:'controlProductor.php',
+			type:'POST',
+			beforeSend: function(){
+				$("#divBaseTabla").html("Espere un momento...");
+								  },
+			success: function (response){
+				if (response!="OK"){
+					$("#mensaje").html(response);
+									}
+										} 
+						});
+}
+
+function eliminarEquipo(id){
+	var parametros = {
+		"accion" : "-Equipo",
+ 		"id": id
+	};
+	$.ajax({
+						data: parametros,
+						url:'controlProductor.php',
+						type:'POST',
+						beforeSend: function(){
+							$("#mensaje").html("...");
+						}, 
+						success: function (response){
+							$("#mensaje").html(response);
+							if (response.indexOf("OK")>=0){
+								verEquipo();
+							}
+								}
+							});
+							}
+
+function actuEquipo(){
+		var parametros = {
+			"accion"  : "aEquipo",
+				"id": $("#txtIdEquipo").val(),
+			 "variedad" : $("#txtEquipoVariedad").val(),
+			 "anio" : $("#txtEquipoAño").val(),
+			 "cantidad" : $("#txtEquipoCant").val()			 			 
+	};
+	$.ajax({
+						data: parametros,
+						url:'controlProductor.php',
+						type:'POST',
+						beforeSend: function(){
+							$("#mensaje").html("...");
+						}, 
+						success: function (response){
+							$("#mensaje").html(response);
+							if (response.indexOf("OK")>=0){
+								verEquipo();		
+							}
+								}
+							});
+	}
+
+function editarEquipo(id, variedad, anio, cantidad){
+		$("#ModalTituloEquipo").html("Editando");
+		$("#btnAgEquipo").hide();
+		$("#btnAcEquipo").show();
+		$("#txtIdEquipo").val(id);
+		$("#txtEquipoVariedad").val(variedad);
+		$("#txtEquipoAño").val(anio);
+		$("#txtEquipoCant").val(cantidad);				
+}
+
+ 
+function cambiarTituloModalEquipo(id){
+	$("#txtIdEquipo").val(id);
+	$("#ModalTituloEquipo").html("Agregando");
+	$("#btnAcEquipo").hide();
+	$("#btnAgEquipo").show();
+	$("#txtEquipoVariedad").val("");
+	$("#txtEquipoAño").val("");
+	$("#txtEquipoCant").val("");
+}
+
+
+function agregarEquipo(){
+	var parametros = {
+		"accion"  : "+Equipo",
+			"id": $("#txtIdEquipo").val(),
+		 "variedad" : $("#txtEquipoVariedad").val(),
+		 "anio" : $("#txtEquipoAño").val(),
+		 "cantidad" : $("#txtEquipoCant").val()
+		};
+		$.ajax({
+					data: parametros,
+					url:'controlProductor.php',
+					type:'POST',
+					beforeSend: function(){
+						$("#mensaje").html("...");
+					}, 
+					success: function (response){
+						$("#mensaje").html(response);
+						if (response.indexOf("OK")>=0){
+							verEquipo();
+						}
+							}
+						});
+}
+
+function verEquipo(){
+	var parametros={				
+			"accion" : "verEquipo",
+			"id": <?php echo $id ?>
+				};
+		$.ajax({
+			data: parametros,
+			url:'controlProductor.php',
+			type:'POST',
+			beforeSend: function(){
+				$("#divBaseTabla").html("Espere un momento...");
+								  },
+			success: function (response){
+				if (response!="OK"){
+					$("#mensaje").html(response);
+									}
+										} 
+						});
+}
+
+
+function eliminarMaterial(id){
+	var parametros = {
+		"accion" : "-Material",
+ 		"id": id
+	};
+	$.ajax({
+						data: parametros,
+						url:'controlProductor.php',
+						type:'POST',
+						beforeSend: function(){
+							$("#mensaje").html("...");
+						}, 
+						success: function (response){
+							$("#mensaje").html(response);
+							if (response.indexOf("OK")>=0){
+								verMaterial();
+							}
+								}
+							});
+							}
+
+function actuMaterial(){
+		var parametros = {
+			"accion"  : "aMaterial",
+				"id": $("#txtIdMaterial").val(),
+			 "variedad" : $("#txtMaterialVariedad").val(),
+			 "anio" : $("#txtMaterialAño").val(),
+			 "cantidad" : $("#txtMaterialCant").val()			 			 
+	};
+	$.ajax({
+						data: parametros,
+						url:'controlProductor.php',
+						type:'POST',
+						beforeSend: function(){
+							$("#mensaje").html("...");
+
+						}, 
+						success: function (response){
+							$("#mensaje").html(response);
+							if (response.indexOf("OK")>=0){
+								verMaterial();		
+							}
+								}
+							});
+	}
+
+
+function editarMaterial(id, variedad, anio, cantidad){
+		$("#ModalTituloMaterial").html("Editando");
+		$("#btnAgMaterial").hide();
+		$("#btnAcMaterial").show();
+		$("#txtIdMaterial").val(id);
+		$("#txtMaterialVariedad").val(variedad);
+		$("#txtMaterialAño").val(anio);
+		$("#txtMaterialCant").val(cantidad);				
+}
+
+ 
+
+function cambiarTituloModalMaterial(id){
+	$("#txtIdMaterial").val(id);
+	$("#ModalTituloMaterial").html("Agregando");
+	$("#btnAcMaterial").hide();
+	$("#btnAgMaterial").show();
+	$("#txtMaterialVariedad").val("");
+	$("#txtMaterialAño").val("");
+	$("#txtMaterialCant").val("");
+}
+
+function agregarMaterial(){
+	var parametros = {
+		"accion"  : "+Material",
+			"id": $("#txtIdMaterial").val(),
+		 "variedad" : $("#txtMaterialVariedad").val(),
+		 "anio" : $("#txtMaterialAño").val(),
+		 "cantidad" : $("#txtMaterialCant").val()
+		};
+		$.ajax({
+					data: parametros,
+					url:'controlProductor.php',
+					type:'POST',
+					beforeSend: function(){
+						$("#mensaje").html("...");
+					}, 
+					success: function (response){
+						$("#mensaje").html(response);
+						if (response.indexOf("OK")>=0){
+							verMaterial();
+						}
+							}
+						});
+}
+
+
+
+function verMaterial(){
+	var parametros={				
+			"accion" : "verMaterial",
+			"id": <?php echo $id ?>
+				};
+		$.ajax({
+			data: parametros,
+			url:'controlProductor.php',
+			type:'POST',
+			beforeSend: function(){
+				$("#divBaseTabla").html("Espere un momento...");
+								  },
+			success: function (response){
+				if (response!="OK"){
+					$("#mensaje").html(response);
+									}
+										} 
+						});
+}
+
+
+function eliminarSombra(id){
+	var parametros = {
+		"accion" : "-Sombra",
+ 		"id": id
+	};
+	$.ajax({
+						data: parametros,
+						url:'controlProductor.php',
+						type:'POST',
+						beforeSend: function(){
+							$("#mensaje").html("...");
+						}, 
+						success: function (response){
+							$("#mensaje").html(response);
+							if (response.indexOf("OK")>=0){
+								verSombra();
+							}
+								}
+							});
+							}
+
+
+function actuSombra(){
+		var parametros = {
+			"accion"  : "aSombra",
+				"id": $("#txtIdSombra").val(),
+			 "variedad" : $("#txtSombraVariedad").val(),
+			 "anio" : $("#txtSombraAño").val(),
+			 "cantidad" : $("#txtSombraCant").val()			 			 
+	};
+	$.ajax({
+						data: parametros,
+						url:'controlProductor.php',
+						type:'POST',
+						beforeSend: function(){
+							$("#mensaje").html("...");
+
+						}, 
+						success: function (response){
+							$("#mensaje").html(response);
+							if (response.indexOf("OK")>=0){
+								verSombra();		
+							}
+								}
+							});
+	}
+
+function editarSombra(id, variedad, anio, cantidad){
+		$("#ModalTituloSombra").html("Editando");
+		$("#btnAgSombra").hide();
+		$("#btnAcSombra").show();
+		$("#txtIdSombra").val(id);
+		$("#txtSombraVariedad").val(variedad);
+		$("#txtSombraAño").val(anio);
+		$("#txtSombraCant").val(cantidad);				
+}
+
+
+function cambiarTituloModalSombra(id){
+	$("#txtIdSombra").val(id);
+	$("#ModalTituloSombra").html("Agregando");
+	$("#btnAcSombra").hide();
+	$("#btnAgSombra").show();
+	$("#txtSombraVariedad").val("");
+	$("#txtSombraAño").val("");
+	$("#txtSombraCant").val("");
+}
+
+function agregarSombra(){
+	var parametros = {
+		"accion"  : "+Sombra",
+			"id": $("#txtIdSombra").val(),
+		 "variedad" : $("#txtSombraVariedad").val(),
+		 "anio" : $("#txtSombraAño").val(),
+		 "cantidad" : $("#txtSombraCant").val()
+		};
+		$.ajax({
+					data: parametros,
+					url:'controlProductor.php',
+					type:'POST',
+					beforeSend: function(){
+						$("#mensaje").html("...");
+					}, 
+					success: function (response){
+						$("#mensaje").html(response);
+						if (response.indexOf("OK")>=0){
+							verSombra();
+						}
+							}
+						});
+}
+
+
+
+function verSombra(){
+	var parametros={				
+			"accion" : "verSombra",
+			"id": <?php echo $id ?>
+				};
+		$.ajax({
+			data: parametros,
+			url:'controlProductor.php',
+			type:'POST',
+			beforeSend: function(){
+				$("#divBaseTabla").html("Espere un momento...");
+								  },
+			success: function (response){
+				if (response!="OK"){
+					$("#mensaje").html(response);
+									}
+										} 
+						});
+}
+
+
+
 
 function eliminarCafe(id){
 	var parametros = {
@@ -375,9 +1098,6 @@ function actuCafe(){
 							}
 								}
 							});
-
-
-
 	}
 
 
