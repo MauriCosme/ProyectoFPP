@@ -273,8 +273,6 @@ var parametros ={
 	"productorGuia": $("#txtProductorGuia").val(),
 	"anioDeIncorporacion": $("#txtAnioIncorporacion").val(),
 };
-
-
 $.ajax({
 data: parametros,
 						url:'controlPrincipal.php',
@@ -290,8 +288,6 @@ data: parametros,
 							}
 								}
 							});
-	
-
 }
 
 

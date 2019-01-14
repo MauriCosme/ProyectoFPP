@@ -1007,7 +1007,119 @@ if($accion=="-Seco"){
 	echo "OK";
 }
 
+if ($accion== "verEventos") {
+	$sql = "SELECT * FROM eventos where idProductor='".$id."'";
+		$tbl = $conex->query($sql);
+		echo  "<div class='TitulosMensajes'><img src='img/seco.png'  class='imgsInsumos'>&nbsp;&nbsp;&nbsp;&nbsp;<p id='TT'>Eventos</p></div>";
+		echo "<button id='btnNuevoCap' data-toggle='modal' data-target='#modalAgregarEventos' onclick='cambiarTituloModalEventos(".$id.")'>Nuevo</button><br><br><br>";
+		echo "<table id='tablaCapacit' class='table table-condensed'>
+		<thead class='thead-dark '>
+			<tr id='filatitulos'>
+				<th>No.</th>
+				<th>Evento</th>
+				<th>Fecha</th>
+				<th>Dias de asistencia</th>
+				<th colspan='2'>Opciones</th>
+			</tr>
+		</thead>
+		";
+		while ($row = $tbl->fetch_array()){
+	echo"
+	<TR>
+		<td>".$row["id"]."</td>
+		<td>".$row["evento"]."</td>
+		<td>".$row["fecha"]."</td>
+		<td>".$row["diasAsistencia"]."</td>
+		<td><button type='button' class='btn btn-danger' onclick = 'eliminarEventos(".$row["id"].")'>Eliminar</button></td>
+		<td><button type='button' class='btn btn-warning' data-toggle='modal' data-target='#modalAgregarEventos' onclick = 'editarEventos(".$row["id"].",
+									\"".$row['evento']."\",
+									\"".$row['fecha']."\",
+									\"".$row['diasAsistencia']."\"
+									)'>Editar</button></td>
+	</TR>";
+	}
+	echo"</table>";
+	}
+
+	if ($accion == "+Evento"){
+		$EvId = $_POST["id"];
+ 		$EvEvento = $_POST["evento"];
+ 		$EvFecha = $_POST["fecha"];
+ 		$EvDias = $_POST["diasAsistencia"];
+ 		
+			if($EvEvento == true and $EvFecha == true and $EvDias == true){
+			$sql = "insert into eventos  (evento, fecha, diasAsistencia, idProductor)
+					values ('$EvEvento','$EvFecha','$EvDias', '$EvId')";
+		$conex->query($sql);
+		echo "OK";
+		}else{
+			echo"<script> alert('Rellena todos los campos para poder agregar nuevo Evento');</script>";
+			echo "OK";
+		}
+
+	}
+
+
+	if ($accion == "aEvento") {				//para actualizar utilizamos el id del registro de la tabla no del usuario
+		$IdEvento = $_POST["Id"];
+		$Evento = $_POST["Evento"];
+		$Fecha = $_POST["EvFecha"];
+		$DiasAsistencia = $_POST["DiasAsistencia"];
+	
+		$sql = "update eventos set
+		 id='".$IdEvento."',
+		 evento='".$Evento."',
+		 fecha='".$Fecha."',
+		 diasAsistencia='" .$DiasAsistencia."'
+
+		   where id='".$IdEvento."'";
+
+		   $conex->query($sql);
+		   echo "OK";
+	
+}
+
+if($accion=="-Evento"){
+	$id = $_POST["id"];
+	$sql ="delete from eventos where id=".$id;
+	$conex->query($sql);
+	echo "OK";
+}
+
+
+
+
+
+
+if ($accion== "verCiclos") {
+	echo "<button id='btnAgregarDP' data-toggle='modal' data-target='#EditarDP' onclick='cambiarTitulo(".$id.")'  >Nuevo ciclo </button><br>";
+	$sql = "SELECT * FROM ciclosproduccion where idProductor='".$id."'";
+	$r= $conex-> query($sql);
+		if ($r->num_rows>0){
+			
+			while ($row = $r->fetch_array()){
+				echo"
+				<button>".$row["ciclo"]."</button>
+				
+				";
+
+
+			}
+		
+	}else{
+		
+		echo "<button id='btnAgregarDP' data-toggle='modal' data-target='#EditarDP' onclick='cambiarTitulo(".$id.")'  >Nuevo ciclo </button>";
+
+	}
+
+}
+
+
+
+
    ?>
+
+   
 
 
 

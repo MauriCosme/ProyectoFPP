@@ -47,11 +47,9 @@
 </html>
 <script>
 	function validar(){
-
 						var parametros={
 							"usuario" : $("#usuario").val(),
 							"contrasenia" : $("#contrasenia").val()
-
 										}
 										;
 						$.ajax({
@@ -62,21 +60,17 @@
 									beforeSend: function(){
 										$("#mensaje").html("Validando...");
 														  },
-
 									success: function (response){
 										if (response!="OK"){
 											$("#mensaje").html(response);
 															}
 										else{
 											if($("#usuario").val() == "mauri"){
-
 												document.location= "admin.php";
 											}
 											else{
-
 												document.location="principal.php";												
 											}
-											
 											}
 																} 
 							

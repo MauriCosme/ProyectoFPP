@@ -38,6 +38,7 @@ $nombre = $_POST['nombre'];
 		 	<img id="imgUsuario" src="img/usuario.png" class="img-fluid" alt="Responsive image">
 		  	<p id="usuario"><?php echo $_SESSION['usuario'] ?></p>
 		 	<button id="cerrar" onclick="cerrarsession()">cerrar sesion</button>
+		 	
 		 </div>
 	</div>
 		
@@ -45,7 +46,7 @@ $nombre = $_POST['nombre'];
 	<div id="inic">
 		<button id="btninic" class="btn btn-success" onclick="inicio()">inicio</button>
 		<h2 id="nomMorado"><?php echo $nombre;  ?></h2>		
-	<center>
+		<center>
 			<div>
 				<button class="btnsInsumos" onclick="CambColor1(), verNutricion()" type="button" id="btnNutri">Nutricion</button>
 				<button class="btnsInsumos" onclick="CambColor2(), verPrevencion()" type="button" id="btnPreven">Prevención</button>
@@ -61,8 +62,17 @@ $nombre = $_POST['nombre'];
 	</div>
 
 
+	<div id="barraTBNCiclos">
+		<center>
+			<div id="botonesCiclos">
+				
+			</div>
+		</center>
+	</div>
 
-	<div id="bloque2">
+
+
+	<div id="bloque2"> 
 		<div id="barrabotones">
 				<button id="btn1" class="botones" onclick="pBTN1(), ver(), ocultarBTNIns()">
 				Datos Generales
@@ -80,11 +90,11 @@ $nombre = $_POST['nombre'];
 				Entrega de insumos
 				</button>
 				<br>
-				<button id="btn5" class="botones" onclick="pBTN5(),ocultarBTNIns()">
+				<button id="btn5" class="botones" onclick="pBTN5(), verEventos(),  ocultarBTNIns()">
 				Eventos
 				</button>
 				<br>
-				<button id="btn6" class="botones" onclick="pBTN6(), ocultarBTNIns()">
+				<button id="btn6" class="botones" onclick="pBTN6(), verCiclos(), ocultarBTNIns()">
 				Ciclos de Producción
 				</button>
 				
@@ -474,11 +484,184 @@ $nombre = $_POST['nombre'];
 			</div>
 		</div>
 
+		<div class="modal fade" id="modalAgregarEventos" tabindex="-1" role="dialog" aria-labelledby="modalAgregarEventos" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			    	<center> 
+			    	<div class="modal-header">
+			     		<h4 id="ModalTituloEventos"> Agregando:</h4>
+			     	</div>
+
+			     	<div id="cuerpo" class="modal-body">
+				      	<input value=<?php echo $id;  ?> class="inputsform" type="" name="" id="txtIdEvento">
+				      	<br>
+				      	<strong>Evento:</strong><br> <input class="inputsform" type="" name="" id="txtEvento">
+				      	<br>
+				      	<strong>Fecha:</strong><br> <input class="inputsform" type="" name="" id="txtEvFecha">
+				      	<br>
+				      	<strong>Dias de asistencia:</strong> <br><input class="inputsform" type="" name="" id="txtDiasAsistencia">
+				      	<br>
+				      	<br>
+				      	<br>
+				      	<button id="btnAgEvento" class="btn btn-primary" class='btn btn-danger' data-dismiss="modal" onclick="agregarEvento()">
+				      		Agregar
+				      	</button>
+						<button id="btnAcEvento" class="btn btn-primary" class='btn btn-danger'  data-dismiss="modal" onclick="actuEvento()">
+							Actualizar
+						</button>
+						<button id="btnCancelar" type="button" class='btn btn-danger'  data-dismiss="modal" >
+				       		Cancelar
+				      	</button>
+			    	</div>
+			    	</center>
+			    </div>
+			</div>
+		</div>
+
 
 	</div>
 </body>
 </html>
 <script type="text/javascript">
+
+
+function verCiclos(){
+
+	$("#mensaje").html("Selecciona un Ciclo");
+
+	var parametros={				
+			"accion" : "verCiclos",
+			"id": <?php echo $id ?>
+				};
+		$.ajax({
+			data: parametros,
+			url:'controlProductor.php',
+			type:'POST',
+			beforeSend: function(){
+				$("#botonesCiclos").html("Espere un momento...");
+								  },
+			success: function (response){
+				if (response!="OK"){
+					$("#botonesCiclos").html(response);
+									}
+										}
+						});
+
+	
+}
+
+
+function eliminarEventos(id){
+	var parametros = {
+		"accion" : "-Evento",
+ 		"id": id
+	};
+	$.ajax({
+						data: parametros,
+						url:'controlProductor.php',
+						type:'POST',
+						beforeSend: function(){
+							$("#mensaje").html("...");
+						}, 
+						success: function (response){
+							$("#mensaje").html(response);
+							if (response.indexOf("OK")>=0){
+								verEventos();
+							}
+								}
+							});
+							}
+
+function actuEvento(){
+		var parametros = {
+			"accion"  : "aEvento",
+				"Id": $("#txtIdEvento").val(),
+			 "Evento" : $("#txtEvento").val(),
+			 "EvFecha" : $("#txtEvFecha").val(),
+			 "DiasAsistencia" : $("#txtDiasAsistencia").val()			 			 
+	};
+	$.ajax({
+						data: parametros,
+						url:'controlProductor.php',
+						type:'POST',
+						beforeSend: function(){
+							$("#mensaje").html("...");
+						}, 
+						success: function (response){
+							$("#mensaje").html(response);
+							if (response.indexOf("OK")>=0){
+								verEventos();		
+							}
+								}
+							});
+	}
+
+function editarEventos(id, evento, fecha, diasAsistencia){
+		$("#ModalTituloEventos").html("Editando datos de un evento");
+		$("#btnAgEvento").hide();
+		$("#btnAcEvento").show();
+		$("#txtIdEvento").val(id);
+		$("#txtEvento").val(evento);
+		$("#txtEvFecha").val(fecha);
+		$("#txtDiasAsistencia").val(diasAsistencia);				
+}
+
+function cambiarTituloModalEventos(id){
+	$("#txtIdEvento").val(id);
+	$("#ModalTituloEventos").html("Agregando Evento");
+	$("#btnAcEvento").hide();
+	$("#btnAgEvento").show();
+	
+	$("#txtEvFecha").val("");
+	$("#txtDiasAsistencia").val("");
+}
+
+function agregarEvento(){
+	var parametros = {
+		"accion"  : "+Evento",
+			"id": $("#txtIdEvento").val(),
+		 "evento" : $("#txtEvento").val(),
+		 "fecha" : $("#txtEvFecha").val(),
+		 "diasAsistencia" : $("#txtDiasAsistencia").val()
+		};
+		$.ajax({
+					data: parametros,
+					url:'controlProductor.php',
+					type:'POST',
+					beforeSend: function(){
+						$("#mensaje").html("...");
+					}, 
+					success: function (response){
+						$("#mensaje").html(response);
+						if (response.indexOf("OK")>=0){
+							verEventos();
+						}
+							}
+						});
+}
+
+
+function verEventos(){
+	var parametros={				
+			"accion" : "verEventos",
+			"id": <?php echo $id ?>
+				};
+		$.ajax({
+			data: parametros,
+			url:'controlProductor.php',
+			type:'POST',
+			beforeSend: function(){
+				$("#divBaseTabla").html("Espere un momento...");
+								  },
+			success: function (response){
+				if (response!="OK"){
+					$("#mensaje").html(response);
+									}
+										} 
+						});
+}
+
+
 
 function eliminarSeco(id){
 	var parametros = {
