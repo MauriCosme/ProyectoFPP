@@ -24,6 +24,7 @@ $nombre = $_POST['nombre'];
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/productor.css">	
 </head>
+
 <body>
 
 	<div id="bloque1">
@@ -63,38 +64,38 @@ $nombre = $_POST['nombre'];
 
 
 	<div id="barraTBNCiclos">
-		<center>
+		
 			<div id="botonesCiclos">
 				
 			</div>
-		</center>
+		
 	</div>
 
 
 
 	<div id="bloque2"> 
 		<div id="barrabotones">
-				<button id="btn1" class="botones" onclick="pBTN1(), ver(), ocultarBTNIns()">
+				<button id="btn1" class="botones" onclick="pBTN1(), ver(), ocultarBTNIns(), ocultarBTNCiclos()">
 				Datos Generales
 				</button>
 				<br>
-				<button id="btn2" class="botones" onclick="pBTN2(), validarDatosPago(), ocultarBTNIns()">
+				<button id="btn2" class="botones" onclick="pBTN2(), validarDatosPago(), ocultarBTNIns(), ocultarBTNCiclos()">
 				Datos para pago
 				</button>
 				<br>
-				<button id="btn3" class="botones" onclick="pBTN3(), verCapacitaciones(),  ocultarBTNIns()">
+				<button id="btn3" class="botones" onclick="pBTN3(), verCapacitaciones(),  ocultarBTNIns(), ocultarBTNCiclos()">
 				Capacitaciones
 				</button>
 				<br>
-				<button id="btn4" class="botones" onclick="pBTN4(), verNutricion(),  mostrarBTNIns(), CambColor1()">
+				<button id="btn4" class="botones" onclick="pBTN4(), verNutricion(),  mostrarBTNIns(), CambColor1(), ocultarBTNCiclos()">
 				Entrega de insumos
 				</button>
 				<br>
-				<button id="btn5" class="botones" onclick="pBTN5(), verEventos(),  ocultarBTNIns()">
+				<button id="btn5" class="botones" onclick="pBTN5(), verEventos(),  ocultarBTNIns(), ocultarBTNCiclos()">
 				Eventos
 				</button>
 				<br>
-				<button id="btn6" class="botones" onclick="pBTN6(), verCiclos(), ocultarBTNIns()">
+				<button id="btn6" class="botones" onclick="pBTN6(), verCiclos(), ocultarBTNIns(), mostrarBTNCiclos()">
 				Ciclos de Producción
 				</button>
 				
@@ -518,16 +519,77 @@ $nombre = $_POST['nombre'];
 			</div>
 		</div>
 
+		<div class="modal fade" id="modalAgregarCiclos" tabindex="-1" role="dialog" aria-labelledby="modalAgregarCiclos" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			    	<center> 
+			    	<div class="modal-header">
+			     		<h4 id="ModalTituloCiclos"> Agregando ciclos:</h4>
+			     	</div>
+
+			     	<div id="cuerpo" class="modal-body">
+				      	<input value=<?php echo $id;  ?> class="inputsform" type="" name="" id="txtIdCiclo">
+				      	<br>
+				      	<strong>Ciclo:</strong><br> <input class="inputsform" type="" name="" id="txtCiclo">
+				      	<br>
+				      	<strong>Estimado de producción:</strong><br> <input class="inputsform" type="" name="" id="txtEstimadoProduccion">
+				      	<br>
+				      	<strong>Fecha de recepción:</strong> <br><input class="inputsform" type="" name="" id="txtFechaRecepcion">
+						<br>
+						<strong>Fecha de la entrega de resultados:</strong> <br><input class="inputsform" type="" name="" id="txtFechaRecepcion">
+						<br>
+						<strong>Fecha del envio de la muestra:</strong> <br><input class="inputsform" type="" name="" id="txtFechaRecepcion">
+						<br>
+						<strong>Fecha de la recepción de los resultados:</strong> <br><input class="inputsform" type="" name="" id="txtFechaRecepcion">
+						<br>
+						<strong>Puntaje:</strong> <br><input class="inputsform" type="" name="" id="txtFechaRecepcion">
+						<br>
+						<strong>Porcentaje de mancha:</strong> <br><input class="inputsform" type="" name="" id="txtFechaRecepcion">
+						<br>
+						<strong>Cantidad Acopida:</strong> <br><input class="inputsform" type="" name="" id="txtFechaRecepcion">
+						<br>
+						<strong>Precio Anticipo:</strong> <br><input class="inputsform" type="" name="" id="txtFechaRecepcion">
+						<br>
+						<strong>Precio final:</strong> <br><input class="inputsform" type="" name="" id="txtFechaRecepcion">
+						<br>
+						<strong>Humedad:</strong> <br><input class="inputsform" type="" name="" id="txtFechaRecepcion">
+						<br>
+						<strong>Rendimiento:</strong> <br><input class="inputsform" type="" name="" id="txtFechaRecepcion">
+				      	<br>  
+						<strong>Nombre del lote:</strong> <br><input class="inputsform" type="" name="" id="txtFechaRecepcion">
+						<br> 
+						<strong>Fecha del lote:</strong> <br><input class="inputsform" type="" name="" id="txtFechaRecepcion">
+						<br> 
+						<strong>Comprador:</strong> <br><input class="inputsform" type="" name="" id="txtFechaRecepcion">
+						<br>   
+				      	<br>
+				      	<button id="btnAgEvento" class="btn btn-primary" class='btn btn-danger' data-dismiss="modal" onclick="agregarEvento()">
+				      		Agregar
+				      	</button>
+						<button id="btnAcEvento" class="btn btn-primary" class='btn btn-danger'  data-dismiss="modal" onclick="actuEvento()">
+							Actualizar
+						</button>
+						<button id="btnCancelar" type="button" class='btn btn-danger'  data-dismiss="modal" >
+				       		Cancelar
+				      	</button>
+			    	</div>
+			    	</center>
+			    </div>
+			</div>
+		</div>
+
 
 	</div>
 </body>
+
 </html>
 <script type="text/javascript">
 
 
+
 function verCiclos(){
 
-	$("#mensaje").html("Selecciona un Ciclo");
+	$("#mensaje").html("<img id='imgflecha' src='img/flecha2.png'> <p id='TxtSeleccionaCiclo'>Selecciona un Ciclo</p>  ");
 
 	var parametros={				
 			"accion" : "verCiclos",
@@ -541,13 +603,42 @@ function verCiclos(){
 				$("#botonesCiclos").html("Espere un momento...");
 								  },
 			success: function (response){
-				if (response!="OK"){
+				
 					$("#botonesCiclos").html(response);
-									}
+									
 										}
 						});
 
 	
+}
+
+
+
+
+
+function DetallesCiclos(id){
+	var parametros = {
+		"accion" : "verDetallesCiclo",
+		"id"     : id,
+ 		"idCiclo": id
+	};
+	$.ajax({
+						data: parametros,
+						url:'controlProductor.php',
+						type:'POST',
+						beforeSend: function(){
+							$("#mensaje").html("...");
+						}, 
+						success: function (response){
+							$("#mensaje").html(response);
+							
+								}
+							});
+	
+
+
+
+
 }
 
 
@@ -2174,6 +2265,26 @@ function CambColor8(){
 
 }
 	
+
+
+
+function ocultarBTNCiclos(){
+
+$("#barraTBNCiclos").hide();
+
+}
+
+
+
+function mostrarBTNCiclos(){
+
+$("#barraTBNCiclos").show();
+
+
+}
+
+
+
 
 
 

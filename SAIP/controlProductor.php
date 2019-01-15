@@ -215,7 +215,7 @@ if ($accion== "verCapacitaciones") {
 
 $sql = "SELECT * FROM capacitaciones where idProductor='".$id."'";
 	$tbl = $conex->query($sql);
-	echo  "<div class='TitulosMensajes'><img src='img/cap.png'  class='imgsInsumos'>&nbsp;&nbsp;&nbsp;&nbsp;<p id='TT'>Capacitaciones</p></div>";
+	
 	echo "<button id='btnNuevoCap' data-toggle='modal' data-target='#modalAgregarCAP' onclick='cambiarTituloModalCAP(".$id.")'>Nuevo</button><br><br><br>";
 	echo "<table id='tablaCapacit' class='table table-condensed'>
 	<thead class='thead-dark '>
@@ -318,8 +318,6 @@ if($accion=="-CAP"){
 
 
 if ($accion== "verNutricion") {
-
-
 $sql = "SELECT * FROM paquetenutricion where idProductor='".$id."'";
 	$tbl = $conex->query($sql);
 	echo  "<div class='TitulosMensajes'><img src='img/nutri.png'  class='imgsInsumos'>&nbsp;&nbsp;&nbsp;&nbsp;<p id='TT'>Paquetes de Nutrición</p></div>";
@@ -1010,7 +1008,7 @@ if($accion=="-Seco"){
 if ($accion== "verEventos") {
 	$sql = "SELECT * FROM eventos where idProductor='".$id."'";
 		$tbl = $conex->query($sql);
-		echo  "<div class='TitulosMensajes'><img src='img/seco.png'  class='imgsInsumos'>&nbsp;&nbsp;&nbsp;&nbsp;<p id='TT'>Eventos</p></div>";
+		
 		echo "<button id='btnNuevoCap' data-toggle='modal' data-target='#modalAgregarEventos' onclick='cambiarTituloModalEventos(".$id.")'>Nuevo</button><br><br><br>";
 		echo "<table id='tablaCapacit' class='table table-condensed'>
 		<thead class='thead-dark '>
@@ -1087,34 +1085,91 @@ if($accion=="-Evento"){
 }
 
 
-
-
-
-
 if ($accion== "verCiclos") {
-	echo "<button id='btnAgregarDP' data-toggle='modal' data-target='#EditarDP' onclick='cambiarTitulo(".$id.")'  >Nuevo ciclo </button><br>";
+	echo "<button id='btnAgregarDP' data-toggle='modal' data-target='#modalAgregarCiclos' onclick='cambiarTitulo(".$id.")'  >Nuevo ciclo </button><br>";
 	$sql = "SELECT * FROM ciclosproduccion where idProductor='".$id."'";
 	$r= $conex-> query($sql);
 		if ($r->num_rows>0){
 			
 			while ($row = $r->fetch_array()){
 				echo"
-				<button>".$row["ciclo"]."</button>
+				<button type='button' class='btn btn-warning' id='botonci' onclick='DetallesCiclos(".$row["id"].")'>".$row["ciclo"]."</button>
 				
 				";
 
 
 			}
 		
-	}else{
-		
-		echo "<button id='btnAgregarDP' data-toggle='modal' data-target='#EditarDP' onclick='cambiarTitulo(".$id.")'  >Nuevo ciclo </button>";
-
 	}
 
 }
 
 
+
+
+if ($accion== "verDetallesCiclo") {
+	
+	$idCiclo = $_POST["idCiclo"];
+	$sql = "SELECT * FROM ciclosproduccion where id='".$idCiclo."'";
+		$tbl = $conex->query($sql);
+		
+		while ($row = $tbl->fetch_array()){
+	echo"
+		<div id='DivCiclos'>
+		
+			<p style='display: none' class='CiclosEncab'>id:					</p>
+			<p style='display: none' class='CiclosCamp'>".$row["id"]."		</p><br>
+			<p class='CiclosEncab'>Ciclo:				</p>
+			<p class='CiclosCamp'>".$row["ciclo"]."		</p><br>
+			<p class='CiclosEncab'>Estimado de produccion de cafe pergamino(Kg):</p>
+			<p class='CiclosCamp'> ".$row["estimado"]." </p><br>
+			<br>
+			<p id='tituloMT'>Muestra tomada<p>
+			<hr>
+			<p class='CiclosEncab'>Fecha de recepción:  </p>
+			<p class='CiclosCamp'>".$row["fechaRecepcionMuestra"]."</p><br>
+			<p class='CiclosEncab'>Fecha de la entrega de resultados:  </p>
+			<p class='CiclosCamp'>".$row["fechaEntregaResultados"]."</p><br>
+			<p class='CiclosEncab'>Fecha del envio de la muestra:  </p>
+			<p class='CiclosCamp'>".$row["fechaEnvioMuestra"]."</p><br>
+			<p class='CiclosEncab'>Fecha de la recepción de los resultados:  </p>
+			<p class='CiclosCamp'>".$row["fechaRecepcionResultados"]."</p><br>
+			<p class='CiclosEncab'>Puntaje:  </p>
+			<p class='CiclosCamp'>".$row["puntaje"]."</p><br>
+			<p class='CiclosEncab'>Porcentaje de mancha:  </p>
+			<p class='CiclosCamp'>".$row["porcentajeMancha"]."</p><br>
+			<hr>
+			<br>
+			<p class='CiclosEncab'>Cantidad Acopida:  </p>
+			<p class='CiclosCamp'>".$row["cantidadAcopiada"]."</p><br>
+			<p class='CiclosEncab'>Precio Anticipo:  </p>
+			<p class='CiclosCamp'>".$row["precioAnticipo"]."</p><br>
+			<p class='CiclosEncab'>Precio final:  </p>
+			<p class='CiclosCamp'>".$row["precioFinal"]."</p><br>
+			<p class='CiclosEncab'>Humedad:  </p>
+			<p class='CiclosCamp'>".$row["humedad"]."</p><br>
+			<p class='CiclosEncab'>Rendimiento:  </p>
+			<p class='CiclosCamp'>".$row["rendimiento"]."</p><br>
+			<p class='CiclosEncab'>Nombre del lote:  </p>
+			<p class='CiclosCamp'>".$row["nombreLote"]."</p><br>
+			<p class='CiclosEncab'>Fecha del lote:  </p>
+			<p class='CiclosCamp'>".$row["fechaLote"]."</p><br>
+			<p class='CiclosEncab'>Comprador:  </p>
+			<p class='CiclosCamp'>".$row["comprador"]."</p><br>
+			<br><br>
+
+		
+			<td><button type='button' class='btn btn-danger' onclick = 'eliminarEventos(".$row["id"].")'>Eliminar</button></td>
+			<td><button type='button' class='btn btn-warning' data-toggle='modal' data-target='#modalAgregarEventos' onclick = 'editarEventos(".$row["id"].",
+									\"".$row['ciclo']."\",
+									\"".$row['estimado']."\",
+									\"".$row['fechaRecepcionMuestra']."\"
+									)'>Editar</button></td>
+		</div>
+	";
+	}
+	
+	}
 
 
    ?>

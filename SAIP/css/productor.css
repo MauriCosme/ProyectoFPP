@@ -1,6 +1,6 @@
 body{
-
-	min-width: 1100px;
+	width: 1300px;
+	min-width: 1345px;	
 }
 
 #izq{
@@ -279,6 +279,7 @@ td{
 }
 
 #tablaCapacit{
+	margin-top: -30px;
 	font-size: 68%;
 	width: 90%;
 	margin-left: 5%;
@@ -323,7 +324,7 @@ td{
 	width: 20%;
 	height: 35px;
 	background: #A00955;
-	margin-left: 30%;
+	margin-left: 70%;
 	border-radius: 10px;
 	margin-top: 10px;
 	border:0px solid;
@@ -354,6 +355,74 @@ td{
 	color: white;
 	
 	
+}
+
+
+.CiclosEncab{
+color: black;
+display: inline-block;
+
+}
+
+.CiclosCamp{
+	color: rgb(8, 114, 141);
+	display: inline-block;
+	margin-left: 2%;
+	
+
+	}
+	
+
+#botonesCiclos{
+	margin-left:25%; 
+	width: 65%;
+
+}
+
+#botonci{
+	margin-top: -40px;
+	
+}
+
+#DivCiclos{
+
+width: 100%;
+margin-top: 45px;
+margin-left: 45px;
+
+}
+
+hr{
+margin-left: 0px;
+width: 95%;
+border: 1px solid  rgba(230, 106, 5, 0.897);
+
+}
+
+#tituloMT{
+color: rgba(230, 106, 5, 0.897);
+font-weight: bold;
+}
+
+
+#TxtSeleccionaCiclo{
+margin-top: 25px;
+margin-left: 20px;
+width: 35%;
+text-align: left;
+color: rgba(2, 119, 134, 0.856);
+font-weight: bold;
+
+
+}
+
+
+#imgflecha{
+margin-top: 10px;
+margin-left: 1%;
+width: 70px;
+height: 70px;
+
 }
 
 
