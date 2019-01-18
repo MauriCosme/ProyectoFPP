@@ -10,7 +10,7 @@ if($varsession == null || $varsession =''){
 $id = $_POST['id'];
 $nombre = $_POST['nombre'];
 
- // echo "El Id es: ".$nombre;
+
 ?>
 
 <!DOCTYPE html>
@@ -49,31 +49,19 @@ $nombre = $_POST['nombre'];
 		<h2 id="nomMorado"><?php echo $nombre;  ?></h2>		
 		<center>
 			<div>
-				<button class="btnsInsumos" onclick="CambColor1(), verNutricion()" type="button" id="btnNutri">Nutricion</button>
-				<button class="btnsInsumos" onclick="CambColor2(), verPrevencion()" type="button" id="btnPreven">Prevención</button>
-				<button class="btnsInsumos" onclick="CambColor3(), verCafe()" type="button" id="btnCafe">Plantas de cafe</button>
-				<button class="btnsInsumos" onclick="CambColor4(), verSombra()" type="button" id="btnSombra">Arboles de Sombra</button>
-				<button class="btnsInsumos" onclick="CambColor5(), verMaterial()" type="button" id="btnMat">Material/herramientas</button>
-				<button class="btnsInsumos" onclick="CambColor6(), verEquipo()" type="button" id="btnEquip">Equipo</button>
-				<button class="btnsInsumos" onclick="CambColor7(), verVivero()" type="button" id="btnVivero">Material para vivero</button>
-				<button class="btnsInsumos" onclick="CambColor8(), verSeco()" type="button" id="btnBenefic">Beneficio seco</button>
-
+				
 			</div>
 		</center>
 	</div>
 
-
-	<div id="barraTBNCiclos">
-		
-			<div id="botonesCiclos">
-				
-			</div>
-		
-	</div>
+	
+	
 
 
 
 	<div id="bloque2"> 
+		
+	<br>
 		<div id="barrabotones">
 				<button id="btn1" class="botones" onclick="pBTN1(), ver(), ocultarBTNIns(), ocultarBTNCiclos()">
 				Datos Generales
@@ -100,8 +88,28 @@ $nombre = $_POST['nombre'];
 				</button>
 				
 		</div>
-		<div id="mensaje">
+		
+		
+		<div id="mensajeP">
+				<button class="btnsInsumos" onclick="CambColor1(), verNutricion()" type="button" id="btnNutri">Nutricion</button>
+				<button class="btnsInsumos" onclick="CambColor2(), verPrevencion()" type="button" id="btnPreven">Prevención</button>
+				<button class="btnsInsumos" onclick="CambColor3(), verCafe()" type="button" id="btnCafe">Plantas de cafe</button>
+				<button class="btnsInsumos" onclick="CambColor4(), verSombra()" type="button" id="btnSombra">Arboles de Sombra</button>
+				<button class="btnsInsumos" onclick="CambColor5(), verMaterial()" type="button" id="btnMat">Material o herramientas</button>
+				<button class="btnsInsumos" onclick="CambColor6(), verEquipo()" type="button" id="btnEquip">Equipo</button>
+				<button class="btnsInsumos" onclick="CambColor7(), verVivero()" type="button" id="btnVivero">Material para vivero</button>
+				<button class="btnsInsumos" onclick="CambColor8(), verSeco()" type="button" id="btnBenefic">Beneficio seco</button>
+
+			<div id="barraBTNCiclos">
+			
+			<div id="botonesCiclos">	
+			</div>
+			<button id='btnAgregarCic' data-toggle='modal' data-target='#modalAgregarCiclos' onclick="cambiarTituloModalCiclos(<?php echo $id;  ?>)"  >Nuevo ciclo </button><br>
+			</div>
+
+			<div id="mensaje">
 						<!-- aqui van los datos -->
+			</div>
 		</div>
 		<center>
 			<div class="modal fade" id="EditarDatosG" tabindex="-1" role="dialog" aria-labelledby="EditarDatosG" aria-hidden="true">
@@ -536,39 +544,72 @@ $nombre = $_POST['nombre'];
 				      	<br>
 				      	<strong>Fecha de recepción:</strong> <br><input class="inputsform" type="" name="" id="txtFechaRecepcion">
 						<br>
-						<strong>Fecha de la entrega de resultados:</strong> <br><input class="inputsform" type="" name="" id="txtFechaRecepcion">
+						<strong>Fecha de la entrega de resultados:</strong> <br><input class="inputsform" type="" name="" id="txtFechaEntregaR">
 						<br>
-						<strong>Fecha del envio de la muestra:</strong> <br><input class="inputsform" type="" name="" id="txtFechaRecepcion">
+						<strong>Fecha del envio de la muestra:</strong> <br><input class="inputsform" type="" name="" id="txtFechaEnvioM">
 						<br>
-						<strong>Fecha de la recepción de los resultados:</strong> <br><input class="inputsform" type="" name="" id="txtFechaRecepcion">
+						<strong>Fecha de la recepción de los resultados:</strong> <br><input class="inputsform" type="" name="" id="txtFechaRecepcionR">
 						<br>
-						<strong>Puntaje:</strong> <br><input class="inputsform" type="" name="" id="txtFechaRecepcion">
+						<strong>Puntaje:</strong> <br><input class="inputsform" type="" name="" id="txtPuntaje">
 						<br>
-						<strong>Porcentaje de mancha:</strong> <br><input class="inputsform" type="" name="" id="txtFechaRecepcion">
+						<strong>Porcentaje de mancha:</strong> <br><input class="inputsform" type="" name="" id="txtPorcentajeMancha">
 						<br>
-						<strong>Cantidad Acopida:</strong> <br><input class="inputsform" type="" name="" id="txtFechaRecepcion">
+						<strong>Cantidad Acopida:</strong> <br><input class="inputsform" type="" name="" id="txtCantidadAcopida">
 						<br>
-						<strong>Precio Anticipo:</strong> <br><input class="inputsform" type="" name="" id="txtFechaRecepcion">
+						<strong>Precio Anticipo:</strong> <br><input class="inputsform" type="" name="" id="txtPrecioAnticipo">
 						<br>
-						<strong>Precio final:</strong> <br><input class="inputsform" type="" name="" id="txtFechaRecepcion">
+						<strong>Precio final:</strong> <br><input class="inputsform" type="" name="" id="txtPrecioFinal">
 						<br>
-						<strong>Humedad:</strong> <br><input class="inputsform" type="" name="" id="txtFechaRecepcion">
+						<strong>Humedad:</strong> <br><input class="inputsform" type="" name="" id="txtHumedad">
 						<br>
-						<strong>Rendimiento:</strong> <br><input class="inputsform" type="" name="" id="txtFechaRecepcion">
+						<strong>Rendimiento:</strong> <br><input class="inputsform" type="" name="" id="txtRendimiento">
 				      	<br>  
-						<strong>Nombre del lote:</strong> <br><input class="inputsform" type="" name="" id="txtFechaRecepcion">
+						<strong>Nombre del lote:</strong> <br><input class="inputsform" type="" name="" id="txtNomLote">
 						<br> 
-						<strong>Fecha del lote:</strong> <br><input class="inputsform" type="" name="" id="txtFechaRecepcion">
+						<strong>Fecha del lote:</strong> <br><input class="inputsform" type="" name="" id="txtFechaLote">
 						<br> 
-						<strong>Comprador:</strong> <br><input class="inputsform" type="" name="" id="txtFechaRecepcion">
+						<strong>Comprador:</strong> <br><input class="inputsform" type="" name="" id="txtComprador">
 						<br>   
 				      	<br>
-				      	<button id="btnAgEvento" class="btn btn-primary" class='btn btn-danger' data-dismiss="modal" onclick="agregarEvento()">
+				      	<button id="btnAgCiclo" class="btn btn-primary" class='btn btn-danger' data-dismiss="modal" onclick="agregarCiclo()">
 				      		Agregar
 				      	</button>
-						<button id="btnAcEvento" class="btn btn-primary" class='btn btn-danger'  data-dismiss="modal" onclick="actuEvento()">
+						<button id="btnAcCiclo" class="btn btn-primary" class='btn btn-danger'  data-dismiss="modal" onclick="actuCiclo()">
 							Actualizar
 						</button>
+						<button id="btnCancelar" type="button" class='btn btn-danger'  data-dismiss="modal" >
+				       		Cancelar
+				      	</button>
+			    	</div>
+			    	</center>
+			    </div>
+			</div>
+		</div>
+		<div class="modal fade" id="modalAgregarImagen" tabindex="-1" role="dialog" aria-labelledby="modalAgregarImagen" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			    	<center> 
+			    	<div class="modal-header">
+			     		<h4 id="ModalTituloEventos"> Agregando imagen:</h4>
+			     	</div>
+
+			     	<div id="cuerpo" class="modal-body">
+				      	<input value=<?php echo $id;  ?> class="inputsform" type="" name="" id="txtIdImg">
+						  <input class="inputsform" type="" name="" id="txtIddelciclo">
+				      	<br>
+
+						<form enctype="multipart/form-data" class="formulario">
+							<input class="btn btn-primary" name="archivo" type="file" id="imagen" onchange="info()" /><br /><br />
+							<input class="btn btn-success" type="button"  value="Subir imagen" onclick="subir(), intNomEXt(), agregarImg()" /><br />
+						</form>
+						<div class="messages"></div><br /><br />
+						<div class="showImage"></div>
+						<div id="mensaje"></div>
+						<input  placeholder="nombre" type="" name="" id="nombreImg">
+						<input  placeholder="extension" type="" name="" id="extImg">
+				      
+
+
 						<button id="btnCancelar" type="button" class='btn btn-danger'  data-dismiss="modal" >
 				       		Cancelar
 				      	</button>
@@ -585,12 +626,244 @@ $nombre = $_POST['nombre'];
 </html>
 <script type="text/javascript">
 
+function meterIdCiclo(id){
+	$("#txtIddelciclo").val(id);
+
+}
+
+
+function info(){
+	var archivo = $("#imagen")[0].files[0];
+	var nombre = archivo.name;
+	var extension = nombre.substring(nombre.lastIndexOf('.')+1);
+	var fileSize = archivo.size;
+	mostrarMensaje("<span class='info'>Archivo a subir:" + nombre + "con peso de " + fileSize + " y de extension" + extension + "</span>");
+				}
+
+function mostrarMensaje(mensaje){
+	$(".messages").html("").show();
+	$(".messages").html(mensaje);				
+	}
+
+function subir(){
+	var datosFormulario = new FormData( $(".formulario")[0]);
+	var mensaje="";
+	$.ajax({
+		url: 'Subir.php',
+		type: 'POST',
+		data: datosFormulario,
+		// importantes
+		cache: false,
+		contentType: false,
+		processData: false,
+		beforeSend: function(){
+						mostrarMensaje("<span class='before'>Subiendo... espera</span>");
+						}, success: function(datos){
+							mostrarMensaje("<span class='success'>Subido</span>");
+		$(".showImage").html	("<img src='fotos/"+datos+"' />")
+			},
+			error:function(){
+				mostrarMensaje("<span class='error'>Algo salio mal</span>");
+			}
+					})
+
+				}
+
+// esta funcion introduce dentro de las cajas de texto 
+// con id nombre y extencion, justo esos valores
+function intNomEXt(){
+	var archivo = $("#imagen")[0].files[0];
+	var nombre = archivo.name;
+	var extension = nombre.substring(nombre.lastIndexOf('.')+1);
+	$("#nombreImg").val(nombre);
+	$("#extImg").val(extension);
+}
+
+function agregarImg(){
+	var parametros = {
+		"accion"  : "+img",
+		"id": $("#txtIdImg").val(),
+		"nombre": $("#nombreImg").val(),
+		"extension": $("#extImg").val(),
+		"idCiclo":$("#txtIddelciclo").val()
+		};
+		$.ajax({
+					data: parametros,
+					url:'ImgInBD.php',
+					type:'POST',
+					beforeSend: function(){
+						$("#mensaje").html("...");
+					}, 
+					success: function (response){
+						$("#mensaje").html(response);
+						
+							}
+						});
+}
+
+
+
+
+
+function eliminarCiclos(id){
+	var parametros = {
+		"accion" : "-Ciclo",
+ 		"id": id
+	};
+	$.ajax({
+						data: parametros,
+						url:'controlProductor.php',
+						type:'POST',
+						beforeSend: function(){
+							$("#mensaje").html("...");
+						}, 
+						success: function (response){
+							$("#mensaje").html(response);
+							if (response.indexOf("OK")>=0){
+								verCiclos();
+							}
+								}
+							});
+							}
+
+function actuCiclo(){
+		var parametros = {
+		 "accion": "aCiclo",
+		 "id":   $("#txtIdCiclo").val(),
+		 "Ciclo" : $("#txtCiclo").val(),
+		 "EstProduc" : $("#txtEstimadoProduccion").val(),
+		 "FecR" : $("#txtFechaRecepcion").val(),
+		 "FecEntrR" : $("#txtFechaEntregaR").val(),
+		 "FecEnvM" : $("#txtFechaEnvioM").val(),
+		 "FecRecR" : $("#txtFechaRecepcionR").val(),
+		 "Puntaje" : $("#txtPuntaje").val(),
+		 "PMancha" : $("#txtPorcentajeMancha").val(),
+		 "CantAcop" : $("#txtCantidadAcopida").val(),
+		 "PrecAnt" : $("#txtPrecioAnticipo").val(),
+		 "PrecFin" : $("#txtPrecioFinal").val(),
+		 "Humedad" : $("#txtHumedad").val(),
+		 "Rendimiento" : $("#txtRendimiento").val(),
+		 "NomLote" : $("#txtNomLote").val(),
+		 "FecLote" : $("#txtFechaLote").val(),
+		 "Comprador" : $("#txtComprador").val()			 			 
+	};
+	$.ajax({
+						data: parametros,
+						url:'controlProductor.php',
+						type:'POST',
+						beforeSend: function(){
+							$("#mensaje").html("...");
+						}, 
+						success: function (response){
+							$("#mensaje").html(response);
+							if (response.indexOf("OK")>=0){
+								DetallesCiclos($("#txtIdCiclo").val())
+							}
+								}
+							});
+	}
+
+
+function editarCiclos(id, ciclo, estimado, fechaRecepcionMuestra, fechaEntregaResultados, 
+						fechaEnvioMuestra, fechaRecepcionResultados, puntaje, porcentajeMancha, 
+						cantidadAcopiada, precioAnticipo, precioFinal, humedad, rendimiento, nombreLote, 
+						fechaLote, comprador){
+		$("#ModalTituloCiclos").html("Editando datos de un ciclo");
+		$("#btnAgCiclo").hide();
+		$("#btnAcCiclo").show();
+		$("#txtIdCiclo").val(id);
+		$("#txtCiclo").val(ciclo);
+		$("#txtEstimadoProduccion").val(estimado);
+		$("#txtFechaRecepcion").val(fechaRecepcionMuestra);
+		$("#txtFechaEntregaR").val(fechaEntregaResultados);
+		$("#txtFechaEnvioM").val(fechaEnvioMuestra);
+		$("#txtFechaRecepcionR").val(fechaRecepcionResultados);
+		$("#txtPuntaje").val(puntaje);
+		$("#txtPorcentajeMancha").val(porcentajeMancha);
+		$("#txtCantidadAcopida").val(cantidadAcopiada);
+		$("#txtPrecioAnticipo").val(precioAnticipo);
+		$("#txtPrecioFinal").val(precioFinal);
+		$("#txtHumedad").val(humedad);
+		$("#txtRendimiento").val(rendimiento);
+		$("#txtNomLote").val(nombreLote);
+		$("#txtFechaLote").val(fechaLote);
+		$("#txtComprador").val(comprador);
+		
+					
+}
+
+
+function cambiarTituloModalCiclos(id){
+	$("#txtIdCiclo").val(id);
+	$("#ModalTituloCiclos").html("Agregando Ciclos");
+	$("#btnAcCiclo").hide();
+	$("#btnAgCiclo").show();
+	$("#txtCiclo").val("");
+	$("#txtEstimadoProduccion").val("");
+	$("#txtFechaRecepcion").val("");
+	$("#txtFechaEntregaR").val("");
+	$("#txtFechaEnvioM").val("");
+	$("#txtFechaRecepcionR").val("");
+	$("#txtPuntaje").val("");
+	$("#txtPorcentajeMancha").val("");
+	$("#txtCantidadAcopida").val("");
+	$("#txtPrecioAnticipo").val("");
+	$("#txtPrecioFinal").val("");
+	$("#txtHumedad").val("");
+	$("#txtRendimiento").val("");
+	$("#txtNomLote").val("");
+	$("#txtFechaLote").val("");
+	$("#txtComprador").val("");
+	
+
+
+}
+
+
+function agregarCiclo(){
+	var parametros = {
+		"accion"  : "+Ciclo",
+			"id": $("#txtIdCiclo").val(),
+		"Ciclo" : $("#txtCiclo").val(),
+		 "EstProduc" : $("#txtEstimadoProduccion").val(),
+		 "FecR" : $("#txtFechaRecepcion").val(),
+		 "FecEntrR" : $("#txtFechaEntregaR").val(),
+		 "FecEnvM" : $("#txtFechaEnvioM").val(),
+		 "FecRecR" : $("#txtFechaRecepcionR").val(),
+		 "Puntaje" : $("#txtPuntaje").val(),
+		 "PMancha" : $("#txtPorcentajeMancha").val(),
+		 "CantAcop" : $("#txtCantidadAcopida").val(),
+		 "PrecAnt" : $("#txtPrecioAnticipo").val(),
+		 "PrecFin" : $("#txtPrecioFinal").val(),
+		 "Humedad" : $("#txtHumedad").val(),
+		 "Rendimiento" : $("#txtRendimiento").val(),
+		 "NomLote" : $("#txtNomLote").val(),
+		 "FecLote" : $("#txtFechaLote").val(),
+		 "Comprador" : $("#txtComprador").val()
+		 //el ultimo no lleva coma
+		};
+		$.ajax({
+					data: parametros,
+					url:'controlProductor.php',
+					type:'POST',
+					beforeSend: function(){
+						$("#mensaje").html("...");
+					}, 
+					success: function (response){
+						$("#mensaje").html(response);
+						if (response.indexOf("OK")>=0){
+							verCiclos()//aqui falta refrescar pendiente *******************************************************
+						}
+							}
+						});
+}
+
+
+
 
 
 function verCiclos(){
-
 	$("#mensaje").html("<img id='imgflecha' src='img/flecha2.png'> <p id='TxtSeleccionaCiclo'>Selecciona un Ciclo</p>  ");
-
 	var parametros={				
 			"accion" : "verCiclos",
 			"id": <?php echo $id ?>
@@ -604,16 +877,10 @@ function verCiclos(){
 								  },
 			success: function (response){
 				
-					$("#botonesCiclos").html(response);
-									
+					$("#botonesCiclos").html(response);									
 										}
 						});
-
-	
 }
-
-
-
 
 
 function DetallesCiclos(id){
@@ -634,12 +901,8 @@ function DetallesCiclos(id){
 							
 								}
 							});
-	
-
-
-
-
 }
+
 
 
 function eliminarEventos(id){
@@ -702,7 +965,7 @@ function cambiarTituloModalEventos(id){
 	$("#ModalTituloEventos").html("Agregando Evento");
 	$("#btnAcEvento").hide();
 	$("#btnAgEvento").show();
-	
+	$("#txtEvento").val("");
 	$("#txtEvFecha").val("");
 	$("#txtDiasAsistencia").val("");
 }
@@ -2270,15 +2533,16 @@ function CambColor8(){
 
 function ocultarBTNCiclos(){
 
-$("#barraTBNCiclos").hide();
+$("#barraBTNCiclos").hide();
 
 }
+ocultarBTNCiclos()
 
 
 
 function mostrarBTNCiclos(){
 
-$("#barraTBNCiclos").show();
+$("#barraBTNCiclos").show();
 
 
 }

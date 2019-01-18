@@ -173,3 +173,14 @@ idProductor int not null,
 primary key (id),
 foreign key (idProductor) references productores(id)
 );
+
+create table imagenes(
+id int not null auto_increment,
+nombre varchar(100),
+extension varchar(10),
+ruta varchar (100),
+idCiclo int,
+idProductor int,
+primary key(id), 
+foreign key (idProductor) references productores (id)
+);

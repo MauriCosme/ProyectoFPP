@@ -1,3 +1,6 @@
+ 
+ 
+ 
  <?php
 	include "conexion.php";
  	$accion = $_POST["accion"];
@@ -1054,7 +1057,6 @@ if ($accion== "verEventos") {
 			echo"<script> alert('Rellena todos los campos para poder agregar nuevo Evento');</script>";
 			echo "OK";
 		}
-
 	}
 
 
@@ -1074,7 +1076,6 @@ if ($accion== "verEventos") {
 
 		   $conex->query($sql);
 		   echo "OK";
-	
 }
 
 if($accion=="-Evento"){
@@ -1086,7 +1087,7 @@ if($accion=="-Evento"){
 
 
 if ($accion== "verCiclos") {
-	echo "<button id='btnAgregarDP' data-toggle='modal' data-target='#modalAgregarCiclos' onclick='cambiarTitulo(".$id.")'  >Nuevo ciclo </button><br>";
+	
 	$sql = "SELECT * FROM ciclosproduccion where idProductor='".$id."'";
 	$r= $conex-> query($sql);
 		if ($r->num_rows>0){
@@ -1094,29 +1095,18 @@ if ($accion== "verCiclos") {
 			while ($row = $r->fetch_array()){
 				echo"
 				<button type='button' class='btn btn-warning' id='botonci' onclick='DetallesCiclos(".$row["id"].")'>".$row["ciclo"]."</button>
-				
 				";
-
-
-			}
-		
+			}	
 	}
-
 }
 
-
-
-
 if ($accion== "verDetallesCiclo") {
-	
 	$idCiclo = $_POST["idCiclo"];
 	$sql = "SELECT * FROM ciclosproduccion where id='".$idCiclo."'";
 		$tbl = $conex->query($sql);
-		
 		while ($row = $tbl->fetch_array()){
-	echo"
+		echo"
 		<div id='DivCiclos'>
-		
 			<p style='display: none' class='CiclosEncab'>id:					</p>
 			<p style='display: none' class='CiclosCamp'>".$row["id"]."		</p><br>
 			<p class='CiclosEncab'>Ciclo:				</p>
@@ -1157,19 +1147,140 @@ if ($accion== "verDetallesCiclo") {
 			<p class='CiclosEncab'>Comprador:  </p>
 			<p class='CiclosCamp'>".$row["comprador"]."</p><br>
 			<br><br>
-
-		
-			<td><button type='button' class='btn btn-danger' onclick = 'eliminarEventos(".$row["id"].")'>Eliminar</button></td>
-			<td><button type='button' class='btn btn-warning' data-toggle='modal' data-target='#modalAgregarEventos' onclick = 'editarEventos(".$row["id"].",
+			<button type='button' class='btn btn-danger' onclick = 'eliminarCiclos(".$row["id"].")'>Eliminar</button>
+			<button type='button' class='btn btn-warning' data-toggle='modal' data-target='#modalAgregarCiclos' onclick = 'editarCiclos(
+									 ".$row["id"].",
 									\"".$row['ciclo']."\",
 									\"".$row['estimado']."\",
-									\"".$row['fechaRecepcionMuestra']."\"
-									)'>Editar</button></td>
+									\"".$row['fechaRecepcionMuestra']."\",
+									\"".$row['fechaEntregaResultados']."\",
+									\"".$row['fechaEnvioMuestra']."\",
+									\"".$row['fechaRecepcionResultados']."\",
+									\"".$row['puntaje']."\",
+									\"".$row['porcentajeMancha']."\",
+									\"".$row['cantidadAcopiada']."\",
+									\"".$row['precioAnticipo']."\",
+									\"".$row['precioFinal']."\",
+									\"".$row['humedad']."\",
+									\"".$row['rendimiento']."\",
+									\"".$row['nombreLote']."\",
+									\"".$row['fechaLote']."\",
+									\"".$row['comprador']."\"									
+									)'>Editar</button>
+			<button type='button' class='btn btn-success' data-toggle='modal' data-target='#modalAgregarImagen' onclick = 'meterIdCiclo(".$row["id"].")'>Subir PDF</button>
+			
+			
+		
+									
 		</div>
 	";
+	$idPRODUC = $row["idProductor"];
+	$sql = "SELECT * FROM imagenes where idCiclo='".$idCiclo."' and  idProductor='".$idPRODUC."'";
+	$tbl = $conex->query($sql);
+		while ($row = $tbl->fetch_array()){
+			
+	echo"<a href='".$row["ruta"]."' target='_blank'> ver PDF</a>";
+	echo "Id del Productor______".$idPRODUC;
+	echo "Id del Ciclo______".$idCiclo;
+
+
+		}
 	}
+
 	
+
 	}
+
+	if ($accion == "+Ciclo"){
+		$CicId = $_POST["id"];
+		$Ciclo = $_POST["Ciclo"];
+		$CicEstProduc = $_POST["EstProduc"];
+		$CicFecR = $_POST["FecR"];
+		$CicFecEntrR = $_POST["FecEntrR"];
+		$CicFecEnvM = $_POST["FecEnvM"];
+		$CicFecRecR = $_POST["FecRecR"];
+		$CicPuntaje = $_POST["Puntaje"];
+		$CicPMancha = $_POST["PMancha"];
+		$CicCantAcop = $_POST["CantAcop"];
+		$CicPrecAnt = $_POST["PrecAnt"];
+		$CicPrecFin = $_POST["PrecFin"];
+		$CicHumedad = $_POST["Humedad"];
+		$CicRendimiento = $_POST["Rendimiento"];
+		$CicNomLote = $_POST["NomLote"];
+		$CicFecLote = $_POST["FecLote"];
+		$CicComprador = $_POST["Comprador"];
+
+			if($Ciclo == true and $CicEstProduc == true and $CicFecR == true){
+			$sql = "insert into ciclosproduccion  (ciclo, estimado, fechaRecepcionMuestra, fechaEntregaResultados,
+													 fechaEnvioMuestra, fechaRecepcionResultados, puntaje,
+													  porcentajeMancha, cantidadAcopiada, precioAnticipo, precioFinal,
+													   humedad, rendimiento, nombreLote, fechaLote, comprador, idProductor)
+					values ('$Ciclo', '$CicEstProduc',  '$CicFecR',  '$CicFecEntrR',
+							  '$CicFecEnvM',  '$CicFecRecR',  '$CicPuntaje',  '$CicPMancha',
+								'$CicCantAcop',  '$CicPrecAnt',  '$CicPrecFin',  '$CicHumedad',
+								'$CicRendimiento',  '$CicNomLote',  '$CicFecLote',  '$CicComprador',  '$CicId' )";
+		$conex->query($sql);
+		echo "OK";
+		}else{
+			echo"<script> alert('Debes rellenar al menos los tres primeros campos para poder guardar el ciclo');</script>";
+			
+		}
+	}
+
+
+
+
+	if ($accion == "aCiclo") {				//para actualizar utilizamos el id del registro de la tabla no del usuario
+		$CicId = $_POST["id"];
+		$Ciclo = $_POST["Ciclo"];
+		$CicEstProduc = $_POST["EstProduc"];
+		$CicFecR = $_POST["FecR"];
+		$CicFecEntrR = $_POST["FecEntrR"];
+		$CicFecEnvM = $_POST["FecEnvM"];
+		$CicFecRecR = $_POST["FecRecR"];
+		$CicPuntaje = $_POST["Puntaje"];
+		$CicPMancha = $_POST["PMancha"];
+		$CicCantAcop = $_POST["CantAcop"];
+		$CicPrecAnt = $_POST["PrecAnt"];
+		$CicPrecFin = $_POST["PrecFin"];
+		$CicHumedad = $_POST["Humedad"];
+		$CicRendimiento = $_POST["Rendimiento"];
+		$CicNomLote = $_POST["NomLote"];
+		$CicFecLote = $_POST["FecLote"];
+		$CicComprador = $_POST["Comprador"];
+	
+		$sql = "update ciclosproduccion set
+		 id='".$CicId."',
+		 ciclo='".$Ciclo."',
+		 estimado='".$CicEstProduc."',
+		 fechaRecepcionMuestra='" .$CicFecR."',
+		 fechaEntregaResultados='" .$CicFecEntrR."',
+		 fechaEnvioMuestra='" .$CicFecEnvM."',
+		 fechaRecepcionResultados='" .$CicFecRecR."',
+		 puntaje='" .$CicPuntaje."',
+		 porcentajeMancha='" .$CicPMancha."',
+		 cantidadAcopiada='" .$CicCantAcop."',
+		 precioAnticipo='" .$CicPrecAnt."',
+		 PrecioFinal='" .$CicPrecFin."',
+		 humedad='" .$CicHumedad."',
+		 rendimiento='" .$CicRendimiento."',
+		 nombreLote='" .$CicNomLote."',
+		 fechaLote='" .$CicFecLote."',
+		 comprador='" .$CicComprador."'
+		 
+		 where id='".$CicId."'";
+
+		   $conex->query($sql);
+		   echo "OK";
+}
+
+
+if($accion=="-Ciclo"){
+	$id = $_POST["id"];
+	$sql ="delete from ciclosproduccion where id=".$id;
+	$conex->query($sql);
+	echo "OK";
+}
 
 
    ?>
