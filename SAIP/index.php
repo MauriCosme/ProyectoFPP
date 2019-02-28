@@ -29,7 +29,7 @@
 			<h2> Bienvenido</h2>
 			<img src="img/log2.png">
 			<br>
-			<input type="text" id="usuario" placeholder="Ingresa tu nombre de usuario" /><br />
+			<input type="text" onkeyup="mayus(this);" id="usuario" placeholder="Ingresa tu nombre de usuario" /><br />
 			<br>
 			<input type="password" id="contrasenia" placeholder="Ingresa tu contraseña" />
 			<br>
@@ -46,6 +46,10 @@
 
 </html>
 <script>
+function mayus(e) {
+    e.value = e.value.toUpperCase();
+}
+
 	function validar(){
 						var parametros={
 							"usuario" : $("#usuario").val(),
@@ -65,7 +69,7 @@
 											$("#mensaje").html(response);
 															}
 										else{
-											if($("#usuario").val() == "mauri"){
+											if($("#usuario").val() == "MAURI"){
 												document.location= "admin.php";
 											}
 											else{

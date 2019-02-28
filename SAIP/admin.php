@@ -2,11 +2,11 @@
 session_start();
 $varsession = $_SESSION['usuario'];
 if($varsession == null || $varsession =''){
-
 	echo 'Usted no tiene autorizacion';
 	die();
 }
  ?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -74,11 +74,17 @@ if($varsession == null || $varsession =''){
 		  </div>
 		</div>
 
- 		<button type="button" class='btn btn-danger' onclick="cerrarsession()">cerrar session</button>	
+		 <button type="button" class='btn btn-danger' onclick="cerrarsession()">cerrar session</button>
+		 <button type="button" class='btn btn-success' onclick="irATablaPricipal()">Ir a tabla principal</button>	
 	</body>
 </html>
 
 <script type="text/javascript">
+
+function irATablaPricipal(){
+document.location="principal.php";
+}
+
 
 function cerrarsession(){
 
@@ -101,9 +107,7 @@ function ocultar(){
 	}
 
 
-
-
-	function edit(id, nombre){
+function edit(id, nombre){
 $("#agregar").hide();	
 $("#bt1").show();
 $("#bt2").show();

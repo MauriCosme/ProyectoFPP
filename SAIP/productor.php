@@ -171,7 +171,7 @@ $nombre = $_POST['nombre'];
 			     	</div>
 
 			     	<div id="cuerpo" class="modal-body">
-				      	<input value="" class="inputsform" type="" name="" id="txtId2">
+				      	<input value="" class="inputsform" type="hidden" name="" id="txtId2">
 				      	<br>
 				      	<strong> Folio Padron:</strong><br> <input class="inputsform" type="" name="" id="txtFolioPadron">
 				      	<br>
@@ -202,7 +202,7 @@ $nombre = $_POST['nombre'];
 			     	</div>
 
 			     	<div id="cuerpo" class="modal-body">
-				      	<input value=<?php echo $id;  ?> class="inputsform" type="" name="" id="txtId3">
+				      	<input value=<?php echo $id;  ?> class="inputsform" type="hidden" name="" id="txtId3">
 				      	<br>
 				      	<strong>Taller:</strong><br> <input class="inputsform" type="" name="" id="txtTaller">
 				      	<br>
@@ -237,7 +237,7 @@ $nombre = $_POST['nombre'];
 			     	</div>
 
 			     	<div id="cuerpo" class="modal-body">
-				      	<input value=<?php echo $id;  ?> class="inputsform" type="" name="" id="txtIdNut">
+				      	<input value=<?php echo $id;  ?> class="inputsform" type="hidden" name="" id="txtIdNut">
 				      	<br>
 				      	<strong>Tipo de Producto:</strong><br> <input class="inputsform" type="" name="" id="txtNutTipo">
 				      	<br>
@@ -270,7 +270,7 @@ $nombre = $_POST['nombre'];
 			     	</div>
 
 			     	<div id="cuerpo" class="modal-body">
-				      	<input value=<?php echo $id;  ?> class="inputsform" type="" name="" id="txtIdPrev">
+				      	<input value=<?php echo $id;  ?> class="inputsform" type="hidden" name="" id="txtIdPrev">
 				      	<br>
 				      	<strong>Tipo de Producto:</strong><br> <input class="inputsform" type="" name="" id="txtPrevTipo">
 				      	<br>
@@ -303,7 +303,7 @@ $nombre = $_POST['nombre'];
 			     	</div>
 
 			     	<div id="cuerpo" class="modal-body">
-				      	<input value=<?php echo $id;  ?> class="inputsform" type="" name="" id="txtIdCafe">
+				      	<input value=<?php echo $id;  ?> class="inputsform" type="hidden" name="" id="txtIdCafe">
 				      	<br>
 				      	<strong>Variedad:</strong><br> <input class="inputsform" type="" name="" id="txtCafeVariedad">
 				      	<br>
@@ -336,7 +336,7 @@ $nombre = $_POST['nombre'];
 			     	</div>
 
 			     	<div id="cuerpo" class="modal-body">
-				      	<input value=<?php echo $id;  ?> class="inputsform" type="" name="" id="txtIdSombra">
+				      	<input value=<?php echo $id;  ?> class="inputsform" type="hidden" name="" id="txtIdSombra">
 				      	<br>
 				      	<strong>Variedad:</strong><br> <input class="inputsform" type="" name="" id="txtSombraVariedad">
 				      	<br>
@@ -369,7 +369,7 @@ $nombre = $_POST['nombre'];
 			     	</div>
 
 			     	<div id="cuerpo" class="modal-body">
-				      	<input value=<?php echo $id;  ?> class="inputsform" type="" name="" id="txtIdMaterial">
+				      	<input value=<?php echo $id;  ?> class="inputsform" type="hidden" name="" id="txtIdMaterial">
 				      	<br>
 				      	<strong>Tipo de Material o herramienta:</strong><br> <input class="inputsform" type="" name="" id="txtMaterialVariedad">
 				      	<br>
@@ -402,7 +402,7 @@ $nombre = $_POST['nombre'];
 			     	</div>
 
 			     	<div id="cuerpo" class="modal-body">
-				      	<input value=<?php echo $id;  ?> class="inputsform" type="" name="" id="txtIdEquipo">
+				      	<input value=<?php echo $id;  ?> class="inputsform" type="hidden" name="" id="txtIdEquipo">
 				      	<br>
 				      	<strong>Tipo de equipo:</strong><br> <input class="inputsform" type="" name="" id="txtEquipoVariedad">
 				      	<br>
@@ -435,7 +435,7 @@ $nombre = $_POST['nombre'];
 			     	</div>
 
 			     	<div id="cuerpo" class="modal-body">
-				      	<input value=<?php echo $id;  ?> class="inputsform" type="" name="" id="txtIdVivero">
+				      	<input value=<?php echo $id;  ?> class="inputsform" type="hidden" name="" id="txtIdVivero">
 				      	<br>
 				      	<strong>Tipo de material:</strong><br> <input class="inputsform" type="" name="" id="txtViveroVariedad">
 				      	<br>
@@ -468,7 +468,7 @@ $nombre = $_POST['nombre'];
 			     	</div>
 
 			     	<div id="cuerpo" class="modal-body">
-				      	<input value=<?php echo $id;  ?> class="inputsform" type="" name="" id="txtIdSeco">
+				      	<input value=<?php echo $id;  ?> class="inputsform" type="hidden" name="" id="txtIdSeco">
 				      	<br>
 				      	<strong>Tipo de producto:</strong><br> <input class="inputsform" type="" name="" id="txtSecoVariedad">
 				      	<br>
@@ -502,7 +502,7 @@ $nombre = $_POST['nombre'];
 			     	</div>
 
 			     	<div id="cuerpo" class="modal-body">
-				      	<input value=<?php echo $id;  ?> class="inputsform" type="" name="" id="txtIdEvento">
+				      	<input value=<?php echo $id;  ?> class="inputsform" type="hidden" name="" id="txtIdEvento">
 				      	<br>
 				      	<strong>Evento:</strong><br> <input class="inputsform" type="" name="" id="txtEvento">
 				      	<br>
@@ -536,7 +536,7 @@ $nombre = $_POST['nombre'];
 			     	</div>
 
 			     	<div id="cuerpo" class="modal-body">
-				      	<input value=<?php echo $id;  ?> class="inputsform" type="" name="" id="txtIdCiclo">
+				      	<input value=<?php echo $id;  ?> class="inputsform" type="hidden" name="" id="txtIdCiclo">
 				      	<br>
 				      	<strong>Ciclo:</strong><br> <input class="inputsform" type="" name="" id="txtCiclo">
 				      	<br>
@@ -594,19 +594,18 @@ $nombre = $_POST['nombre'];
 			     	</div>
 
 			     	<div id="cuerpo" class="modal-body">
-				      	<input value=<?php echo $id;  ?> class="inputsform" type="" name="" id="txtIdImg">
-						  <input class="inputsform" type="" name="" id="txtIddelciclo">
+				    	<input value=<?php echo $id;  ?> class="inputsform" type="hidden" name="" id="txtIdImg">
+						<input class="inputsform" type="hidden" name="" id="txtIddelciclo">
 				      	<br>
-
 						<form enctype="multipart/form-data" class="formulario">
-							<input class="btn btn-primary" name="archivo" type="file" id="imagen" onchange="info()" /><br /><br />
+							<input  name="archivo" type="file" id="imagen" onchange="info()" /><br /><br />
 							<input class="btn btn-success" type="button"  value="Subir imagen" onclick="subir(), intNomEXt(), agregarImg()" /><br />
 						</form>
 						<div class="messages"></div><br /><br />
 						<div class="showImage"></div>
 						<div id="mensaje"></div>
-						<input  placeholder="nombre" type="" name="" id="nombreImg">
-						<input  placeholder="extension" type="" name="" id="extImg">
+						<input type="hidden" placeholder="nombre" type="" name="" id="nombreImg">
+						<input  type="hidden" placeholder="extension" type="" name="" id="extImg">
 				      
 
 
@@ -625,6 +624,30 @@ $nombre = $_POST['nombre'];
 
 </html>
 <script type="text/javascript">
+
+function EliminarPdf(id){
+	var parametros = {
+		"accion" : "-pdf",
+ 		"id": id
+	};
+	$.ajax({
+						data: parametros,
+						url:'controlProductor.php',
+						type:'POST',
+						beforeSend: function(){
+							$("#mensaje").html("...");
+						}, 
+						success: function (response){
+							$("#mensaje").html(response);
+							if (response.indexOf("OK")>=0){
+								verCiclos();
+							}
+								}
+							});
+
+
+}
+
 
 function meterIdCiclo(id){
 	$("#txtIddelciclo").val(id);
@@ -696,7 +719,7 @@ function agregarImg(){
 					}, 
 					success: function (response){
 						$("#mensaje").html(response);
-						
+						verCiclos();
 							}
 						});
 }

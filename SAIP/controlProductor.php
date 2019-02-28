@@ -1168,22 +1168,15 @@ if ($accion== "verDetallesCiclo") {
 									\"".$row['comprador']."\"									
 									)'>Editar</button>
 			<button type='button' class='btn btn-success' data-toggle='modal' data-target='#modalAgregarImagen' onclick = 'meterIdCiclo(".$row["id"].")'>Subir PDF</button>
-			
-			
-		
-									
+			<br><br><p>PDFS DE LAS MUESTRAS TOMADAS<p>						
 		</div>
 	";
 	$idPRODUC = $row["idProductor"];
 	$sql = "SELECT * FROM imagenes where idCiclo='".$idCiclo."' and  idProductor='".$idPRODUC."'";
 	$tbl = $conex->query($sql);
-		while ($row = $tbl->fetch_array()){
-			
-	echo"<a href='".$row["ruta"]."' target='_blank'> ver PDF</a>";
-	echo "Id del Productor______".$idPRODUC;
-	echo "Id del Ciclo______".$idCiclo;
-
-
+		while ($row = $tbl->fetch_array()){		
+	echo" <div id='Divpdf'><a  href='".$row["ruta"]."' target='_blank'> <img id='imgdelpdf' src='img/pdf2.png' /> </a>  ";
+	echo"  <button type='button' class='btn btn-danger' onclick='EliminarPdf(".$row["id"].")' >Eliminar</button> </div>";
 		}
 	}
 
@@ -1278,6 +1271,13 @@ if ($accion== "verDetallesCiclo") {
 if($accion=="-Ciclo"){
 	$id = $_POST["id"];
 	$sql ="delete from ciclosproduccion where id=".$id;
+	$conex->query($sql);
+	echo "OK";
+}
+
+if($accion=="-pdf"){
+	$id = $_POST["id"];
+	$sql ="delete from imagenes where id=".$id;
 	$conex->query($sql);
 	echo "OK";
 }
